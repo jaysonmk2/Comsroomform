@@ -1,0 +1,236 @@
+
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'Css/FormPage/style.css'%}">
+</head>
+<body>
+
+
+    <div class="background-image">
+       <img src="{%static 'Images/BackgroundImage.png'%}" class="image" alt="">
+    </div>
+
+    <div class="form-container">
+        <form enctype="multipart/form-data" action="" method="POST">
+            {%csrf_token%}
+            <div class="title">
+                <h1 class="header-title">Data Communications and <br> Communications room Access Request</h1>
+            </div>
+            <hr>
+            <h2 class="subtitle">Personal Information</h2>
+
+
+            <div class="flex-container">
+                <div class="flex">
+                    <label for="id_company_name">First Name</label>
+                    {{dic.form.first_name}}
+                </div>
+                <div class="flex">
+                    <label for="id_company_name">Last Name</label>
+                    {{dic.form.last_name}}
+                </div>
+            </div>
+
+            <div class="flex-container">
+                <div class="flex">
+                    <label for="id_company_name">AIB Number</label>
+                    {{dic.form.AIB_number}}
+                </div>
+                <div class="flex">
+                    <label for="id_company_name">Position Title </label>
+                    {{dic.form.position_title}}
+                </div>
+            </div>
+
+            <div class="flex-container">
+                <div class="flex">
+                    <label for="id_company_name">Telephone</label>
+                    {{dic.form.telephone}}
+                </div>
+                <div class="flex">
+                    <label for="id_company_name">E-mail Address</label>
+                    {{dic.form.email}}
+                </div>
+            </div>
+            <div class="flex-container">
+                <div class="flex">
+                    <label for="id_company_name">Company name</label>
+                    {{dic.form.company_name}}
+                </div>
+                <div class="flex">
+                </div>
+            </div>
+
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Job Duties (Discribe only duties that require this access)</label>
+                    {{dic.form.job_duties}}
+                </div>
+            </div>
+
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Access Justification</label>
+                    {{dic.form.access_justification}}
+                </div>
+            </div>
+
+            <h2 class="subtitle">Access Request</h2>
+
+            <div class="flex-container">
+                <div class="flex">
+                    <label for="id_company_name">WAP/ROA#</label>
+                    {{dic.form.wap_roa}}
+                </div>
+                <div class="flex">
+                    <label for="id_company_name">Request Access Period(Select one)</label>
+                    {{dic.form.required_access}}
+                </div>
+            </div>
+
+            <p class="temporary">If you selected <b>Temporary</b>, <br> Please choose your visit duration.</p>
+            <div class="flex-container">
+                <div class="flex">
+                    <label for="id_company_name">From</label>
+                    {{dic.form.start_time}}
+                </div>
+                <div class="flex">
+                    <label for="id_company_name">To</label>
+                    {{dic.form.end_time}}
+                </div>
+            </div>
+
+            <div class="checkboxes">
+                <label for="" class="extra-big"><b>Main Communications Room (Check all that apply)</b></label>
+                {{dic.form.main_communications_room}}
+            </div>
+
+            <p class="temporary">If you selected wiring closet please check all that apply below</p>
+
+
+            <div class="grid">
+                <div class="grid-item">
+                    <label for="" class="bold">NTB</label>
+                    {{dic.form.new_terminal_building}}
+                </div>
+                <div class="grid-item">
+                    <label for="" class="bold">OTB</label>
+                    {{dic.form.old_terminal_building}}
+                </div>
+                <div class="grid-item">
+                    <label for="" class="bold">Other Builing</label>
+                    {{dic.form.building}}
+                </div>
+            </div>
+
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Other locations please specify</label>
+                    {{dic.form.other_locations}}
+                </div>
+            </div>
+
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Specify Systems (list)</label>
+                    {{dic.form.other_locations}}
+                </div>
+            </div>
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Specify Equipment (list)</label>
+                    {{dic.form.other_locations}}
+                </div>
+            </div>
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Specify Servers (list)</label>
+                    {{dic.form.other_locations}}
+                </div>
+            </div>
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Specify Cables (list)</label>
+                    {{dic.form.other_locations}}
+                </div>
+            </div>
+            <div class="big-input-container">
+                <div class="flex-big-container">
+                    <label for="id_company_name">Files</label>
+                    <p class="condition-text"><b>If you need to add any files please click the button below</b></p>
+                    {{dic.form.files}}
+                </div>
+            </div>
+
+
+
+            <p class="condition-text condition-title"><b>User Responsibilities and Appropriate Use of  Access Agreement</b></p>
+            <p class="condition-text">As a condition of my being granted data center/communication room access and authorization 
+                to handle the equipment, systems and servers specified, I agree to the following:
+            </p>
+
+            <ol class="ordered-list">
+                <li>I will treat my data center/communication room access code as confidential information     
+                and will not share or divulge the code in any manner.
+            </li>
+            <li> I will not identify my access code or PIN as being connected with a data center or 
+                communication room
+        
+            </li>
+            <li> I will not share or expose my PIN to anyone
+
+            </li>
+            <li> In the event the access badge is lost or stolen, or if I suspect others are using it, I will 
+                immediately notify IT by e-mailing itsm@curacao-airport.com.
+        
+            </li>
+            <li> I will only handle the equipment and systems that I am authorized to access.
+
+            </li>
+            <li> I will not open a data center/communication room door for any unauthorized person
+            </li>
+            <li> I will not leave the door unlocked when working in a data center or communications room,
+                and I will secure the door upon exit.
+        
+            </li>
+            <li> I will not eat, drink, or smoke in any data center/communication room.
+
+            </li>
+            <li> I understand that all confidentiality and appropriate use agreements signed by me are still   
+                in effect.
+        
+            </li>
+            <li> I understand that CAPIT will perform periodic random audits to ensure that users comply 
+                with the access authorizations granted to them.
+        
+            </li>
+            <li>I have read and understand all access requirements outlined in User Guidelines for 
+                Communication Room Access.
+        
+            </li>
+            <li>I agree to comply with laws and regulations, policy, airport administrative procedures and 
+                policies, and IT user guidelines, standard and procedures related to technology security 
+                and information security.
+        
+            </li>
+            <li>I understand that failure to adhere to terms and conditions listed above could  result in my  
+                data center/communication room access being revoked
+            </li>
+            </ol>
+            
+            <p class="condition-text">I have read the terms and conditions of my data center/communication room access and authorizations</p>
+            <div class="agree-flex">
+                {{dic.form.agreed_to_terms}}
+                <p class="agree-text"><b>I understand these terms and conditions, and I agree to abide by them.</b></p>
+            </div>
+            <button type="submit" value="submit" class="submit">SUBMIT</button>
+        </form>
+    </div>
+</body>
+</html>

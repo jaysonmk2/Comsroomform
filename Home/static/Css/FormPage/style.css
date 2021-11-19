@@ -1,0 +1,221 @@
+
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+/* This is the font i Imported Clear Sans*/
+@font-face {
+    font-family: 'clear sans';
+    src: url('fonts/ClearSans-Regular.woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'clear sans';
+    src: url('fonts/ClearSans-Medium.woff');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'clear sans';
+    src: url('fonts/ClearSans-Bold.woff');
+    font-style: normal;
+    font-weight: 800;
+}
+/* This is the font i Imported Clear Sans*/
+
+ 
+:root{
+    --primary-color: #0078BF;
+    --input-box-color: #DFF3FF;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6,p,a,label,input,textarea{
+    font-family: clear sans;
+    font-weight: 400;
+}
+
+.background-image{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -9999;
+    top:0;
+    right:0;
+}
+.image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    filter: blur(8px);
+    transform: scale(1.03);
+
+}
+.form-container{
+    background-color: white;
+    padding: 2rem 3rem;
+    width: 80%;
+    margin: 5rem auto;
+    max-width: 1250px;
+}
+
+
+hr{
+    height: 3px;
+    background-color: #e9f7ff;
+    border:none;
+    
+}
+.header-title{
+    color: var(--primary-color);
+    margin: 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.subtitle{
+    padding: 2rem 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.flex{
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+label{
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.flex input,textarea,select{
+    background-color: var(--input-box-color);
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.big-input-container{
+    width: 100%;
+    margin: 2rem 0;
+}
+.big-input-container textarea{
+    width: 100%;
+    height: 150px;
+    resize: vertical;
+    
+}
+.flex-big-container{
+    display: flex;
+    flex-direction: column;
+}
+.temporary{
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin: 2rem 0;
+}
+.extra-big{
+    font-size: 1.3rem;
+}
+.checkboxes{
+    margin-top: 4rem;
+}
+.checkboxes li{
+    list-style: none;
+    margin: 0.7rem 0;
+}
+.checkbox{
+    padding: 0;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: 3rem 0;
+}
+.grid-item{
+    margin: 0 1rem 1rem 0;
+}
+.grid li{
+    list-style: none;
+    margin: 0.7rem 0;
+}
+.bold{
+    font-weight: 800;
+}
+.ordered-list li{
+    font-family: clear sans;
+    color: var(--primary-color);
+}
+.agree-flex{
+    display: flex;
+    flex-direction: row;
+}
+.condition-text{
+    color: var(--primary-color)
+}
+.condition-title{
+    font-size: 1.4rem;
+}
+.agree-text{
+    color: var(--primary-color)
+}
+.submit{
+    border: none;
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 1rem 0 1rem 0;
+    margin: 2rem 0;
+    transition: 0.3s;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.submit:hover{
+    background-color: #84d0ff;
+}
+
+.file-input{
+    padding: 3rem 0;
+    cursor: pointer;
+    border:3px solid #f1f9ff;
+    border-radius: 1rem;
+}
+
+@media (max-width: 950px){
+    .grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .flex-container{
+        flex-direction: column;
+    }
+    .flex{
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 750px){
+    .grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .header-title{
+        font-size: 2rem;
+    }
+}
