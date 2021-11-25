@@ -1,7 +1,7 @@
 from datetime import time
 from django.db import models
 from django.db.models.enums import Choices
-from django.db.models.fields import CharField
+from django.db.models.fields import BLANK_CHOICE_DASH, CharField
 from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -45,14 +45,14 @@ class OtherBuilding(models.Model):
         return self.building_name
 
 class Form(models.Model):
-    company_name = models.CharField(max_length=200)
+    company_name = models.CharField(max_length=200, null=False, blank=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     AIB_number = models.CharField(max_length=100)
     position_title = models.CharField(max_length=200)
     telephone = models.CharField(max_length=20)
     email = models.EmailField()
-    job_duties = models.TextField()
+    job_duties = models.TextField() 
     access_justification = models.TextField()
     wap_roa = models.CharField(max_length=255)
     required_access = models.CharField(choices=RequestAccessChoices, max_length=200)
@@ -67,7 +67,7 @@ class Form(models.Model):
     specify_equipment_list = models.TextField(blank=True)
     specify_server_list = models.TextField(blank=True)
     Specify_cables = models.TextField(blank=True)
-    agreed_to_terms = models.BooleanField(default=True)
+    agreed_to_terms = models.BooleanField(default=False)
     submitted_date_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

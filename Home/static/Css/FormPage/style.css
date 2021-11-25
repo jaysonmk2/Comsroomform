@@ -177,6 +177,7 @@ label{
     display: flex;
     flex-direction: row;
 }
+
 .condition-text{
     color: var(--primary-color)
 }
@@ -207,6 +208,7 @@ label{
     border:3px solid #f1f9ff;
     border-radius: 1rem;
 }
+
 
 @media (max-width: 950px){
     .grid{

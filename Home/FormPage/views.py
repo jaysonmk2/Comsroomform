@@ -5,30 +5,28 @@ from .forms import Form, FileInput
 
 
 def FormPage(request):
+
     if request.method == "POST":
         form = Form(request.POST)
         if form.is_valid():
             bigform = form.save() 
-            
+            print(f'is this even working {form}')
+            for f in request.FILES.getlist('files'):
+                inputs = FileInput(request.FILES, request.POST)
+                if inputs.is_valid():
+                    fileinp = inputs.save(commit=False)
+                    fileinp.files = f
+                    fileinp.form_fk = bigform
+                    fileinp.save()
+                else:
+                    print(inputs.is_valid())
+                    print(inputs.is_bound)
+                    print(inputs.errors)
+            return HttpResponseRedirect('thanks') 
         else:
             print(form.is_bound)
             print(form.is_valid())
             print(form.errors)
-        
-        for f in request.FILES.getlist('files'):
-            inputs = FileInput(request.FILES, request.POST)
-            if inputs.is_valid():
-                print(f'yo this is working {f}')
-                fileinp = inputs.save(commit=False)
-                fileinp.files = f
-                fileinp.form_fk = bigform
-                fileinp.save()
-            else:
-                print(inputs.is_valid())
-                print(inputs.is_bound)
-                print(inputs.errors)
-
-        return HttpResponseRedirect('/help/') 
     else:
         form = Form()
         inputs = FileInput()
@@ -38,3 +36,7 @@ def FormPage(request):
         'fileinputs': FileInput
     }
     return render(request, 'formpage.html', {'dic': dic})
+
+
+def ThanksPage(request):
+    return render(request, 'thank_page.html')
