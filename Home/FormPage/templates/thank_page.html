@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{%static 'Css/FormPage/style.css'%}">
 </head>
 <body>
-    
-    <h1>HI there</h1>
+    <div class="background-image">
+        <img src="{%static 'Images/BackgroundImage.png'%}" class="image" alt="">
+     </div>
+
+     <div class="form-container">
+         <h1 class="thank-page-title">Thank you for submiting the form</h1>
+         <p class="thank-page-text">You will be revieving a mail not that you have submitted this form. <br>
+            Please wait for the mail to inform you if you have been accepteed or not.
+         </p>
+         <button>go back to the form page</button>
+     </div>
 </body>
 </html>

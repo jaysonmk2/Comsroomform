@@ -21,7 +21,7 @@ class Form(forms.ModelForm):
             'building': forms.CheckboxSelectMultiple(attrs={'class':'checkbox'}),
             'start_time':forms.DateInput(attrs={'type': 'date'}),
             'end_time':forms.DateInput(attrs={'type': 'date'}),
-            'agreed_to_terms': forms.CheckboxInput(attrs={'required':True})
+            'agreed_to_terms': forms.CheckboxInput(attrs={'required':True}),
         }
 
 class FileInput(forms.ModelForm):
