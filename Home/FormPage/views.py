@@ -27,7 +27,7 @@ def FormPage(request):
                 print(inputs.is_valid())
                 print(inputs.is_bound)
                 print(inputs.errors)
-                
+
         return HttpResponseRedirect('/help/') 
     else:
         form = Form()
