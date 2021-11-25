@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import Form, FileInput
 # Create your views here.
@@ -22,7 +22,7 @@ def FormPage(request):
                     print(inputs.is_valid())
                     print(inputs.is_bound)
                     print(inputs.errors)
-            return HttpResponseRedirect('thanks') 
+            return redirect('Form:thanks')
         else:
             print(form.is_bound)
             print(form.is_valid())
