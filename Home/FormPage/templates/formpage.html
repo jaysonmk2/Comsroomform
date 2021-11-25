@@ -19,6 +19,7 @@
     <div class="form-container">
         <form enctype="multipart/form-data" action="" method="POST">
             {%csrf_token%}
+            
             <div class="title">
                 <h1 class="header-title">Data Communications and <br> Communications room Access Request</h1>
             </div>
@@ -164,7 +165,7 @@
                 <div class="flex-big-container">
                     <label for="id_company_name">Files</label>
                     <p class="condition-text"><b>If you need to add any files please click the button below</b></p>
-                    {{dic.form.files}}
+                    {{dic.fileinputs.files}}
                 </div>
             </div>
 

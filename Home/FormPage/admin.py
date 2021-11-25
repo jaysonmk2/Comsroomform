@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MainCommunicationRoom,OldTerminalBuilding,NewTerminalBuilding,OtherBuilding,Form
+from .models import MainCommunicationRoom,OldTerminalBuilding,NewTerminalBuilding,OtherBuilding,Form,FormFiles
 # Register your models here.
 
 
@@ -25,4 +25,5 @@ admin.site.register(OldTerminalBuilding,OldTerminalBuildingAdmin)
 admin.site.register(NewTerminalBuilding, NewTerminalBuildingAdmin)
 admin.site.register(OtherBuilding, OtherBuildingAdmin)
 admin.site.register(Form,FormAdmin)
+admin.site.register(FormFiles)
 

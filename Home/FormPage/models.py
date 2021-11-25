@@ -67,11 +67,13 @@ class Form(models.Model):
     specify_equipment_list = models.TextField(blank=True)
     specify_server_list = models.TextField(blank=True)
     Specify_cables = models.TextField(blank=True)
-    agreed_to_terms = models.BooleanField(blank=False)
-    files = models.FileField(upload_to='files', null=True, blank=True)
+    agreed_to_terms = models.BooleanField(default=True)
     submitted_date_time = models.DateTimeField(default=timezone.now)
-
-
 
     def __str__(self):
         return self.last_name
+
+
+class FormFiles(models.Model):
+    files = models.FileField(upload_to = "uploaded_files", null=True, blank=True)
+    form_fk = models.ForeignKey(Form, on_delete=models.CASCADE, null=True, blank=True)

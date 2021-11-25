@@ -31,6 +31,16 @@
     --primary-color: #0078BF;
     --input-box-color: #DFF3FF;
 }
+
+.error input, .error select {
+    border: 2px red solid;
+}
+
+.errorlist{
+    border: 3px solid red;
+}
+
+
 body{
     margin: 0;
     padding: 0;
