@@ -1,6 +1,9 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import Form, FileInput
+
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -40,3 +43,8 @@ def FormPage(request):
 
 def ThanksPage(request):
     return render(request, 'thank_page.html')
+
+
+@login_required
+def AdminPage(request):
+    return render(request, 'admin/admin-view.html')
