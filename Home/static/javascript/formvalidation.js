@@ -12,9 +12,11 @@ check.addEventListener('change', (event) => {
     if (event.target.value === "TEMPORARY"){
         starttime.required = true;
         endtime.required = true;
+        console.log("temporary")
     }else if(event.target.value === "STANDARD"){
         starttime.required = false;
         endtime.required = false;
+        console.log("standard")
     }
     console.log(check)
   });
