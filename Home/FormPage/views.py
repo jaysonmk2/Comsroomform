@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import Form, FileInput
+from .models import Form as Forms
 
 
 from django.contrib.auth.decorators import login_required
@@ -34,9 +35,10 @@ def FormPage(request):
         form = Form()
         inputs = FileInput()
     
+   
     dic = {
         'form': form,
-        'fileinputs': FileInput
+        'fileinputs': FileInput,
     }
     return render(request, 'formpage.html', {'dic': dic})
 
@@ -47,4 +49,18 @@ def ThanksPage(request):
 
 @login_required
 def AdminPage(request):
-    return render(request, 'admin/admin-view.html')
+    signed_up = Forms.objects.all()
+    dic = {
+        'signed_up':signed_up,
+    }
+    return render(request, 'admin/admin-view.html', {'dic': dic})
+
+@login_required
+def Filtered(request):
+    signed_up = Forms.objects.all()
+    dic = {
+        'signed_up':signed_up,
+    }
+    return render(request, 'admin/admin-view.html', {'dic': dic})
+
+

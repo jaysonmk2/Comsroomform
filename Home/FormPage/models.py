@@ -13,6 +13,11 @@ RequestAccessChoices = [
         ('TEMPORARY', 'Temporary'),
 ]
 
+ApprovedOrNot = [
+        ('APPROVED', 'Approve'),
+        ('REJECT', 'Reject'),
+]
+
 
 class MainCommunicationRoom(models.Model):
     room_name = models.CharField(max_length=100)
@@ -69,6 +74,7 @@ class Form(models.Model):
     Specify_cables = models.TextField(blank=True)
     agreed_to_terms = models.BooleanField(default=False)
     submitted_date_time = models.DateTimeField(default=timezone.now)
+    approved_or_not = models.CharField(choices=ApprovedOrNot, max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.last_name

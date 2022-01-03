@@ -1,7 +1,3 @@
-
-
-console.log("yo my mans")
-
 check = document.getElementById("id_required_access")
 
 starttime = document.getElementById("id_start_time")

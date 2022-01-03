@@ -4,15 +4,52 @@
 {% comment %} this workss fine for now {% endcomment %}
 
 {% block content %}
-
-
     {% if user.is_authenticated %}
-        <p>my mans you are logged in </p>
-        <p>{{user.username}}</p>
-
-
-        <a href="{% url 'logout' %}">yoooo</a>
+        <div class="background-color">
+            <div class="wrapper">
+                {% for person in dic.signed_up %}
+                    <a href="" class="user-link">
+                        <div class="row">
+                            <div class="row-text">
+                                <p class="small-text">Company Name</p>
+                                <p class="big-text">{{person.company_name}}</p>
+                            </div>
+                            <div class="row-text">
+                                <p class="small-text"> Name</p>
+                                <p class="big-text">{{person.last_name}}, {{person.first_name}}</p>
+                            </div>
+                            <div class="row-text">
+                                <p class="small-text">AIB number</p>
+                                <p class="big-text">{{person.AIB_number}}</p>
+                            </div>
+                            <div class="row-text">
+                                <p class="small-text">Submitted date</p>
+                                <p class="big-text">{{person.submitted_date_time}}</p>
+                            </div>
+                            <div class="row-text">
+                                <p class="small-text">Telephone</p>
+                                <p class="big-text">{{person.telephone}}</p>
+                            </div>
+                            <div class="row-text">
+                                <p class="small-text">Requested Access </p>
+                                <p class="big-text">{{person.required_access}}</p>
+                            </div>
+                            <div class="row-text">
+                                {% if person.approved_or_not == None %}
+                                    <p> Pending </p>
+                                {% elif person.approved_or_not == 'APPROVED' %}
+                                    <p>Approved</p>
+                                {% elif person.approved_or_not == 'REJECT' %}
+                                    <p>Rejected</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- <a href="{% url 'logout' %}">yoooo</a> -->
     {% else %}
-        <p>my mans you are logged out </p>
+        <p>login again</p>
     {% endif %}
 {% endblock  %}
