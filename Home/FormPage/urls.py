@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FormPage,ThanksPage, AdminPage, Filtered
+from .views import FormPage,ThanksPage, AdminPage, Active, Pending, Eliminated
 
 
 
@@ -8,5 +8,7 @@ urlpatterns = [
     path('', FormPage, name="Home"),
     path('thanks', ThanksPage, name="thanks"),
     path('admin-page', AdminPage, name="adminpage"),
-    path('filtered', Filtered, name="hello"),
+    path('admin-page/active', Active, name="Eliminated"),
+    path('admin-page/pending', Pending, name="pending"),
+    path('admin-page/eliminated', Eliminated, name="eliminated"),
 ]

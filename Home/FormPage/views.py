@@ -1,5 +1,7 @@
+import datetime
 from django.shortcuts import redirect, render
 from django.http import HttpResponse,HttpResponseRedirect
+from django.utils import timezone
 from .forms import Form, FileInput
 from .models import Form as Forms
 
@@ -56,11 +58,30 @@ def AdminPage(request):
     return render(request, 'admin/admin-view.html', {'dic': dic})
 
 @login_required
-def Filtered(request):
-    signed_up = Forms.objects.all()
+def Active(request):
+    active = Forms.objects.filter(approved_or_not= "APPROVED")
     dic = {
-        'signed_up':signed_up,
+        'signed_up':active,
     }
     return render(request, 'admin/admin-view.html', {'dic': dic})
 
+@login_required
+def Pending(request):
+    pending = Forms.objects.filter(approved_or_not = None)
+    dic = {
+        'signed_up':pending,
+    }
+    return render(request, 'admin/admin-view.html', {'dic': dic})
+
+
+@login_required
+def Eliminated(request):
+    pending = Forms.objects.exclude(end_time__gt=datetime.date.today()).filter(required_access="TEMPORARY")
+    dic = {
+        'signed_up':pending,
+    }
+    return render(request, 'admin/admin-view.html', {'dic': dic})
+
+
+# end_time__gt=datetime.date.today(), 
 
