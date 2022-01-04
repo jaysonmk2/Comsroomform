@@ -18,6 +18,12 @@ class OtherBuildingAdmin(admin.ModelAdmin):
 
 class FormAdmin(admin.ModelAdmin):
     list_display=('company_name','first_name','last_name','AIB_number','telephone','required_access',)
+    search_fields = (
+        'first_name',
+        'last_name',
+        'company_name',
+        'required_access',
+    )
 
 
 admin.site.register(MainCommunicationRoom,MainCommunicationRoomAdmin)

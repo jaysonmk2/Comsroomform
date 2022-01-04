@@ -8,7 +8,7 @@ urlpatterns = [
     path('', FormPage, name="Home"),
     path('thanks', ThanksPage, name="thanks"),
     path('admin-page', AdminPage, name="adminpage"),
-    path('admin-page/active', Active, name="Eliminated"),
+    path('admin-page/active', Active, name="active"),
     path('admin-page/pending', Pending, name="pending"),
     path('admin-page/eliminated', Eliminated, name="eliminated"),
 ]

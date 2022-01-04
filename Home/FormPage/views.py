@@ -59,7 +59,9 @@ def AdminPage(request):
 
 @login_required
 def Active(request):
-    active = Forms.objects.filter(approved_or_not= "APPROVED")
+
+    # end_time__lt, the lt means lesser than and if you see gt it means greater than
+    active = Forms.objects.filter(approved_or_not= "APPROVED").exclude(end_time__lt=datetime.date.today())
     dic = {
         'signed_up':active,
     }
@@ -76,6 +78,8 @@ def Pending(request):
 
 @login_required
 def Eliminated(request):
+
+    # gt means greater than
     pending = Forms.objects.exclude(end_time__gt=datetime.date.today()).filter(required_access="TEMPORARY")
     dic = {
         'signed_up':pending,
