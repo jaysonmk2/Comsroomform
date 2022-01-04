@@ -8,7 +8,7 @@
         <div class="background-color">
             <div class="wrapper">
                 {% for person in dic.signed_up %}
-                    <a href="" class="user-link">
+                    <a href="{%url 'Form:user' person.id%}" class="user-link">
                         <div class="row">
                             <div class="row-text">
                                 <p class="small-text">Company Name</p>

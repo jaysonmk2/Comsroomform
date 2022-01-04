@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FormPage,ThanksPage, AdminPage, Active, Pending, Eliminated
+from .views import FormPage,ThanksPage, AdminPage, Active, Pending, Eliminated, ViewUser
 
 
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('admin-page/active', Active, name="active"),
     path('admin-page/pending', Pending, name="pending"),
     path('admin-page/eliminated', Eliminated, name="eliminated"),
+    path('admin-page/<int:form_id>',ViewUser, name='user' )
 ]

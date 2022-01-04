@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from django.utils import timezone
 from .forms import Form, FileInput
@@ -86,6 +86,15 @@ def Eliminated(request):
     }
     return render(request, 'admin/admin-view.html', {'dic': dic})
 
-
 # end_time__gt=datetime.date.today(), 
 
+@login_required
+def ViewUser(request, form_id):
+    # gt means greater than
+    user_detail = get_object_or_404(Forms, pk=form_id)
+    dic = {
+        'user_detail':user_detail
+    }
+    return render(request, 'admin/admin-view-user-detail.html', {'dic': dic})
+
+ 
