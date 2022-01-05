@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import login_required
 
 
 def FormPage(request):
-
     if request.method == "POST":
         form = Form(request.POST)
         if form.is_valid():
