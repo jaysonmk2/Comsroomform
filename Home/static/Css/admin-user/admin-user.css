@@ -1,0 +1,43 @@
+.wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.margin-container{
+    margin-top: 3rem;
+}
+
+.user-h1{
+    margin-top: 2rem;
+}
+.information-container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2.5rem;
+}
+.text-box{
+    display:flex;
+    flex-basis: 100%;
+}
+.text-box-line{
+    width: 2px;
+    background-color: black;
+    color: black;
+}
+.text-box-text{
+    margin-left: 0.6rem;
+}
+.text-box-title{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.text-box-information{
+    font-style: italic;
+    font-size: 1.6rem;
+}
+.text-box-information-1{
+    font-style: italic;
+    font-size: 1.4rem;
+    width: 80%;
+}
+

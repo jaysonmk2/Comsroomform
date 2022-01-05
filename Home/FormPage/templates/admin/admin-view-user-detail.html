@@ -2,6 +2,201 @@
 
 {% block content %}
 
-    <p>{{dic.user_detail.first_name}}</p>
+    <div class="wrapper">
+        <h1 class="user-h1">Personal Information</h1>
+    </div>
+    <hr>
+    <div class="wrapper">
+        <div class="margin-container">
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Name</p>
+                        <p class="text-box-information">{{dic.user_detail.last_name}}, {{dic.user_detail.first_name}}</p>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">AIB Number</p>
+                        <p class="text-box-information">{{dic.user_detail.AIB_number}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Position Title</p>
+                        <p class="text-box-information">{{dic.user_detail.position_title}}, {{dic.user_detail.first_name}}</p>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Telephone</p>
+                        <p class="text-box-information">+599 9 {{dic.user_detail.telephone}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">E-Mail</p>
+                        <p class="text-box-information">{{dic.user_detail.email}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Job Duties</p>
+                        <p class="text-box-information-1">{{dic.user_detail.job_duties}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Access Justification</p>
+                        <p class="text-box-information-1">{{dic.user_detail.access_justification}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{% endblock  %}
+    <div class="wrapper">
+        <h1 class="user-h1">Access Information</h1>
+    </div>
+    <hr>
+    <div class="wrapper">
+        <div class="margin-container">
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">WAP/ROA number</p>
+                        <p class="text-box-information">{{dic.user_detail.wap_roa}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Required Access</p>
+                        <p class="text-box-information">{{dic.user_detail.required_access}}</p>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">From</p>
+                        <p class="text-box-information">{{dic.user_detail.start_time}}</p>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">To</p>
+                        <p class="text-box-information">{{dic.user_detail.end_time}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Main Communication Room</p>
+                        <ul>
+                            {% for main_room in dic.user_detail.main_communications_room.all %}
+                                <li>{{main_room}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">OTB</p>
+                        {% for otb in dic.user_detail.old_terminal_building.all %}
+                            <li>{{otb}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">NTB</p>
+                        {% for ntb in dic.user_detail.new_terminal_building.all %}
+                            <li>{{ntb}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Other Buildings</p>
+                        {% for other_building in dic.user_detail.building.all %}
+                            <li>{{other_building}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Other Locations</p>
+                        <p class="text-box-information">{{dic.user_detail.other_locations}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Specified Equipment List</p>
+                        <p class="text-box-information">{{dic.user_detail.specify_equipment_list}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Specified System List</p>
+                        <p class="text-box-information">{{dic.user_detail.specify_system_list}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Specified Server List</p>
+                        <p class="text-box-information">{{dic.user_detail.specify_server_list}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="text-box">
+                    <div class="text-box-line"></div>
+                    <div class="text-box-text">
+                        <p class="text-box-title">Specified Cables</p>
+                        <p class="text-box-information">{{dic.user_detail.Specify_cables}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
