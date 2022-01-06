@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <div class="wrapper">
         <h1 class="user-h1">Personal Information</h1>
     </div>
@@ -156,7 +155,11 @@
                     <div class="text-box-line"></div>
                     <div class="text-box-text">
                         <p class="text-box-title">Other Locations</p>
-                        <p class="text-box-information">{{dic.user_detail.other_locations}}</p>
+                        {% if dic.user_detail.other_locations == "" %}
+                            <p class="text-box-information">None</p>
+                        {% else %}
+                            <p class="text-box-information">{{dic.user_detail.other_locations}}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -165,7 +168,11 @@
                     <div class="text-box-line"></div>
                     <div class="text-box-text">
                         <p class="text-box-title">Specified Equipment List</p>
-                        <p class="text-box-information">{{dic.user_detail.specify_equipment_list}}</p>
+                        {% if dic.user_detail.specify_equipment_list == "" %}
+                            <p class="text-box-information">None</p>
+                        {% else %}
+                            <p class="text-box-information">{{dic.user_detail.specify_equipment_list}}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -174,7 +181,11 @@
                     <div class="text-box-line"></div>
                     <div class="text-box-text">
                         <p class="text-box-title">Specified System List</p>
-                        <p class="text-box-information">{{dic.user_detail.specify_system_list}}</p>
+                        {% if dic.user_detail.specify_system_list == "" %}
+                            <p class="text-box-information">None</p>
+                        {% else %}
+                            <p class="text-box-information">{{dic.user_detail.specify_system_list}}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -183,7 +194,11 @@
                     <div class="text-box-line"></div>
                     <div class="text-box-text">
                         <p class="text-box-title">Specified Server List</p>
-                        <p class="text-box-information">{{dic.user_detail.specify_server_list}}</p>
+                        {% if dic.user_detail.specify_server_list == "" %}
+                            <p class="text-box-information">None</p>
+                        {% else %}
+                            <p class="text-box-information">{{dic.user_detail.specify_server_list}}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -192,11 +207,14 @@
                     <div class="text-box-line"></div>
                     <div class="text-box-text">
                         <p class="text-box-title">Specified Cables</p>
-                        <p class="text-box-information">{{dic.user_detail.Specify_cables}}</p>
+                        {% if dic.user_detail.Specify_cables == "" %}
+                            <p class="text-box-information">None</p>
+                        {% else %}
+                            <p class="text-box-information">{{dic.user_detail.Specify_cables}}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 {% endblock %}

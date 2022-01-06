@@ -9,6 +9,8 @@
 
 .user-h1{
     margin-top: 2rem;
+    color: #0078BF;
+    font-size: 2.5rem;
 }
 .information-container{
     display: flex;
