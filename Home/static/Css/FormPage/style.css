@@ -6,21 +6,21 @@
 /* This is the font i Imported Clear Sans*/
 @font-face {
     font-family: 'clear sans';
-    src: url('fonts/ClearSans-Regular.woff');
+    src: url('../fonts/ClearSans-Regular.woff');
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: 'clear sans';
-    src: url('fonts/ClearSans-Medium.woff');
+    src: url('../fonts/ClearSans-Medium.woff');
     font-style: normal;
     font-weight: 600;
 }
 
 @font-face {
     font-family: 'clear sans';
-    src: url('fonts/ClearSans-Bold.woff');
+    src: url('../fonts/ClearSans-Bold.woff');
     font-style: normal;
     font-weight: 800;
 }
@@ -90,10 +90,13 @@ hr{
 }
 
 .subtitle{
-    padding: 2rem 0;
+    padding: 1rem 0;
     color: var(--primary-color);
     font-weight: 600;
-    font-size: 1.7rem;
+    font-size: 2rem;
+}
+.id_company_name{
+    font-weight: bold;
 }
 
 .flex-container{
