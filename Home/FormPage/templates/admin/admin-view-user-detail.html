@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <div class="wrapper">
@@ -216,5 +217,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="files-container">
+            <h2 class="files-title">Files</h2>
+            <div class="file-grid">
+                {% for file in dic.user_files %}
+                    <a href="static{{file.files.url}}" download>{{file.files.url}}</a>
+                {% endfor %}
+
+                <p>ofmidid</p>
+            </div>
+        </div>
+        
     </div>
 {% endblock %}

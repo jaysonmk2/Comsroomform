@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from django.utils import timezone
 from .forms import Form, FileInput
-from .models import Form as Forms
+from .models import Form as Forms, FormFiles
 
 
 from django.contrib.auth.decorators import login_required
@@ -91,8 +91,10 @@ def Eliminated(request):
 def ViewUser(request, form_id):
     # gt means greater than
     user_detail = get_object_or_404(Forms, pk=form_id)
+    files = FormFiles.objects.filter(form_fk_id = form_id)
     dic = {
-        'user_detail':user_detail
+        'user_detail':user_detail,
+        'user_files':files,
     }
     return render(request, 'admin/admin-view-user-detail.html', {'dic': dic})
 
