@@ -3,6 +3,7 @@ from django.db.models import fields
 from django.db.models.fields import BooleanField
 from django.forms.widgets import DateInput
 from .models import Form, FormFiles
+from django.views.generic.edit import UpdateView
 
 
 class Form(forms.ModelForm):
@@ -33,3 +34,5 @@ class FileInput(forms.ModelForm):
         widgets ={
             'files': forms.ClearableFileInput(attrs={'multiple':True}),
         }
+
+

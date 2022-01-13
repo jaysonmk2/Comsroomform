@@ -92,9 +92,20 @@ def ViewUser(request, form_id):
     # gt means greater than
     user_detail = get_object_or_404(Forms, pk=form_id)
     files = FormFiles.objects.filter(form_fk_id = form_id)
+    user = Forms.objects.get(id=form_id)
+
+    form = Form(instance=user)
+    if request.method =='POST':
+        form = Form(request.POST, instance=user)
+        print(form)
+        if form.is_valid():
+            form.save()
+            return redirect('Form:adminpage')   
+    
     dic = {
         'user_detail':user_detail,
         'user_files':files,
+        'form':form,
     }
     return render(request, 'admin/admin-view-user-detail.html', {'dic': dic})
 

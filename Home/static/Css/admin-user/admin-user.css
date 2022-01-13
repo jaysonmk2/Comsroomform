@@ -46,6 +46,20 @@
 .textarea-email{
     width: 100%;
     height: 200px;
-    
 }
 
+
+
+.files-container{
+    margin: 1rem 0;
+}
+.files-title{
+    margin-bottom: 1rem;
+}
+.file-text{
+    text-overflow: ellipsis;
+}
+.file-image{
+    height:50px;
+    width:50px;
+}

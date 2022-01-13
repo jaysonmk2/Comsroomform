@@ -222,14 +222,36 @@
             <h2 class="files-title">Files</h2>
             <div class="file-grid">
                 {% for file in dic.user_files %}
-                    <a href="static{{file.files.url}}" download>{{file.files.url}}</a>
+                    <a href="static{{file.files.url}}" class="files" download>
+                        <div class="flex-file">
+                            <p class="file-text">{{file.files}}</p>
+                            <img src="{%static 'Images/File.png'%}" class="file-image"alt="">
+                        </div>
+                    </a>
                 {% endfor %}
-
-                <p>ofmidid</p>
             </div>
         </div>
 
-        <textarea name="email-send" class="textarea-email"></textarea>
+        <div class="app-or-not">
+            <p class="approved-or-not">This use is 
+                {% if dic.user_detail.approved_or_not == None %}
+                    Pending
+                {% elif dic.user_detail.approved_or_not == 'APPROVED' %}
+                    Approved
+                {% else %}
+                    Rejected
+                {% endif %}
+            </p>
+        </div>
+        <form enctype="multipart/form-data" action="{%url 'Form:user' dic.user_detail.id%}" method="POST">
+            {%csrf_token%}
+            {{dic.form}}
+            <textarea name="email-send" class="textarea-email"></textarea>
+            <button type="submit" value="submit" class="submit">SUBMIT</button>
+        </form>
+           
+
+       
         
     </div>
 {% endblock %}
