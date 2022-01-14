@@ -245,7 +245,14 @@
         </div>
         <form enctype="multipart/form-data" action="{%url 'Form:user' dic.user_detail.id%}" method="POST">
             {%csrf_token%}
-            {{dic.form}}
+
+            <div class="field-list">
+                {% for form in dic.form %}
+                   <div class="hide">{{form}}</div>
+                {% endfor %}
+            </div>
+           
+            
             <textarea name="email-send" class="textarea-email"></textarea>
             <button type="submit" value="submit" class="submit">SUBMIT</button>
         </form>

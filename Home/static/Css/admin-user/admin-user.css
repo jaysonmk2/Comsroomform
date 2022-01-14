@@ -63,3 +63,7 @@
     height:50px;
     width:50px;
 }
+
+.field-list .hide:not(:last-child){
+    display:none;
+}

@@ -11,7 +11,7 @@ class Form(forms.ModelForm):
     class Meta:
         model=Form
         fields='__all__'
-        exclude = ['submitted_date_time']
+        exclude = ['submitted_date_time',]
         error_css_class = 'error'
         required_css_class = 'required'
       

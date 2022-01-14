@@ -4,6 +4,8 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.utils import timezone
 from .forms import Form, FileInput
 from .models import Form as Forms, FormFiles
+from django.core.mail import send_mail
+
 
 
 from django.contrib.auth.decorators import login_required
@@ -13,9 +15,15 @@ from django.contrib.auth.decorators import login_required
 def FormPage(request):
     if request.method == "POST":
         form = Form(request.POST)
+        
         if form.is_valid():
             bigform = form.save() 
-            print(f'is this even working {form}')
+            send_mail(
+                    'New Form filled in',
+                    'Yo my mans someone filled in a form check it out',
+                    'jaysonlauwerends@outlook.com',
+                    ['jaysonlauwerends@outlook.com'],
+                )
             for f in request.FILES.getlist('files'):
                 inputs = FileInput(request.FILES, request.POST)
                 if inputs.is_valid():
@@ -24,14 +32,10 @@ def FormPage(request):
                     fileinp.form_fk = bigform
                     fileinp.save()
                 else:
-                    print(inputs.is_valid())
-                    print(inputs.is_bound)
-                    print(inputs.errors)
+                  pass
             return redirect('Form:thanks')
         else:
-            print(form.is_bound)
-            print(form.is_valid())
-            print(form.errors)
+            pass
     else:
         form = Form()
         inputs = FileInput()
@@ -97,11 +101,31 @@ def ViewUser(request, form_id):
     form = Form(instance=user)
     if request.method =='POST':
         form = Form(request.POST, instance=user)
-        print(form)
         if form.is_valid():
+            print("heloooooo")
             form.save()
+            email = form.cleaned_data['email']
+            approved_or_not = form.cleaned_data['approved_or_not']
+            email_extra_body = request.POST['email-send']
+
+            # APPROVED
+
+            if approved_or_not == 'APPROVED':
+                send_mail(
+                    'Subject here',
+                    f'You have been approved to enter the HATO communication rooms \n {email_extra_body}',
+                    'jaysonlauwerends@outlook.com',
+                    [email,],
+                )
+            else:
+                send_mail(
+                    'Subject here',
+                    f'You have been rejected \n {email_extra_body}',
+                    'jaysonlauwerends@outlook.com',
+                    [email,],
+                )
             return redirect('Form:adminpage')   
-    
+
     dic = {
         'user_detail':user_detail,
         'user_files':files,
