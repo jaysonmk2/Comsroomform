@@ -234,3 +234,17 @@ label{
         font-size: 2rem;
     }
 }
+
+@media (max-width: 550px){
+    .header-title{
+        font-size: 1.5rem;
+    }
+
+    .subtitle{
+        font-size: 1.3rem;
+    }
+
+    .form-container{
+        width: 95%;
+    }
+}

@@ -21,8 +21,8 @@ def FormPage(request):
             send_mail(
                     'New Form filled in',
                     'Yo my mans someone filled in a form check it out',
-                    'jaysonlauwerends@outlook.com',
-                    ['jaysonlauwerends@outlook.com'],
+                    'airporttesting@outlook.com',
+                    ['airporttesting@outlook.com'],
                 )
             for f in request.FILES.getlist('files'):
                 inputs = FileInput(request.FILES, request.POST)
@@ -121,7 +121,7 @@ def ViewUser(request, form_id):
                 send_mail(
                     'Subject here',
                     f'You have been rejected \n {email_extra_body}',
-                    'jaysonlauwerends@outlook.com',
+                    'airporttesting@outlook.com',
                     [email,],
                 )
             return redirect('Form:adminpage')   

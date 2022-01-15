@@ -10,31 +10,31 @@
                 {% for person in dic.signed_up %}
                     <a href="{%url 'Form:user' person.id%}" class="user-link">
                         <div class="row">
-                            <div class="row-text">
+                            <div class="row-text q">
                                 <p class="small-text">Company Name</p>
                                 <p class="big-text">{{person.company_name}}</p>
                             </div>
-                            <div class="row-text">
+                            <div class="row-text w">
                                 <p class="small-text"> Name</p>
                                 <p class="big-text">{{person.last_name}}, {{person.first_name}}</p>
                             </div>
-                            <div class="row-text">
+                            <div class="row-text e">
                                 <p class="small-text">AIB number</p>
                                 <p class="big-text">{{person.AIB_number}}</p>
                             </div>
-                            <div class="row-text">
+                            <div class="row-text r">
                                 <p class="small-text">Submitted date</p>
                                 <p class="big-text">{{person.submitted_date_time}}</p>
                             </div>
-                            <div class="row-text">
+                            <div class="row-text t">
                                 <p class="small-text">Telephone</p>
                                 <p class="big-text">{{person.telephone}}</p>
                             </div>
-                            <div class="row-text">
+                            <div class="row-text y">
                                 <p class="small-text">Requested Access </p>
                                 <p class="big-text">{{person.required_access}}</p>
                             </div>
-                            <div class="row-text">
+                            <div class="row-text u">
                                 {% if person.approved_or_not == None %}
                                     <p> Pending </p>
                                 {% elif person.approved_or_not == 'APPROVED' %}

@@ -67,3 +67,45 @@
 .field-list .hide:not(:last-child){
     display:none;
 }
+
+select{
+    border:none;
+    padding: 1rem 1rem;
+    width:100%;
+    margin: 1rem 0;
+}
+
+.approved-or-not{
+    font-size: 1.5rem;
+}
+
+.submit{
+    border: none;
+    padding: 1rem 1rem;
+    width: 100%;
+    background-color: rgb(0, 153, 255);
+    transition:0.5s;
+    margin: 2rem 0;
+}
+.submit:hover{
+    background-color: rgb(0, 82, 136);
+}
+
+@media (max-width: 950px){
+    .wrapper{
+        width: 90%;
+        
+    }
+    .r, .e, .t, .y{
+        display:none;
+    }
+    .information-container{
+        flex-direction: column;
+
+    }
+
+    .q{
+        margin-top: 1rem;
+    }
+    
+}
