@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 django = "*"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
+boto3 = "*"
+django-storages = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 

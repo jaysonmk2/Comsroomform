@@ -20,7 +20,7 @@ def FormPage(request):
             bigform = form.save() 
             send_mail(
                     'New Form filled in',
-                    'Yo my mans someone filled in a form check it out',
+                    'Someone filled in a form',
                     'airporttesting@outlook.com',
                     ['airporttesting@outlook.com'],
                 )
@@ -114,7 +114,7 @@ def ViewUser(request, form_id):
                 send_mail(
                     'Subject here',
                     f'You have been approved to enter the HATO communication rooms \n {email_extra_body}',
-                    'jaysonlauwerends@outlook.com',
+                    'airporttesting@outlook.com',
                     [email,],
                 )
             else:

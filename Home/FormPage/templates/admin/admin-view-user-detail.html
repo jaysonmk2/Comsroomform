@@ -222,7 +222,7 @@
             <h2 class="files-title">Files</h2>
             <div class="file-grid">
                 {% for file in dic.user_files %}
-                    <a href="static{{file.files.url}}" class="files" download>
+                    <a href="{{file.files.url}}" class="files" download>
                         <div class="flex-file">
                             <p class="file-text">{{file.files}}</p>
                             <img src="{%static 'Images/File.png'%}" class="file-image"alt="">
