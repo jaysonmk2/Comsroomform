@@ -4,7 +4,11 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.utils import timezone
 from .forms import Form, FileInput
 from .models import Form as Forms, FormFiles
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
+from django.conf import settings
+
+from django.template.loader import get_template
+
 
 
 
@@ -102,7 +106,6 @@ def ViewUser(request, form_id):
     if request.method =='POST':
         form = Form(request.POST, instance=user)
         if form.is_valid():
-            print("heloooooo")
             form.save()
             email = form.cleaned_data['email']
             approved_or_not = form.cleaned_data['approved_or_not']
@@ -111,12 +114,26 @@ def ViewUser(request, form_id):
             # APPROVED
 
             if approved_or_not == 'APPROVED':
-                send_mail(
-                    'Subject here',
-                    f'You have been approved to enter the HATO communication rooms \n {email_extra_body}',
-                    'airporttesting@outlook.com',
-                    [email,],
-                )
+
+                html_tpl_path = 'email-template/email.html'
+                context_data =  {'name': 'JK'}
+                email_html_template = get_template(html_tpl_path).render(context_data)
+                receiver_email = email
+                email_msg = EmailMessage('Welcome from airport Coms', 
+                                            email_html_template, 
+                                            settings.APPLICATION_EMAIL,
+                                            [receiver_email],
+                                            reply_to=[settings.APPLICATION_EMAIL]
+                                            )
+                # this is the crucial part that sends email as html content but not as a plain text
+                email_msg.content_subtype = 'html'
+                email_msg.send(fail_silently=False)
+                # send_mail(
+                #     'Subject here',
+                #     f'You have been approved to enter the HATO communication rooms \n {email_extra_body}',
+                #     'airporttesting@outlook.com',
+                #     [email,],
+                # )
             else:
                 send_mail(
                     'Subject here',

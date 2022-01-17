@@ -151,13 +151,14 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'airporttesting@outlook.com'
 EMAIL_HOST_PASSWORD = 'airportsita12'
 EMAIL_USE_TLS = True
+APPLICATION_EMAIL = 'Admin<airporttesting@outlook.com>'
 server = smtplib.SMTP('smtp.office365.com', 587) 
 server.starttls()
 
 
 AWS_ACCESS_KEY_ID = 'AKIAUSKVGITXQWH62CIV'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'airport-comsroom'
+AWS_SECRET_ACCESS_KEY = '++++++'
+AWS_STORAGE_BUCKET_NAME = '+++++++++'
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
