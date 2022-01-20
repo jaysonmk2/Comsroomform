@@ -22,12 +22,25 @@ def FormPage(request):
         
         if form.is_valid():
             bigform = form.save() 
-            send_mail(
-                    'New Form filled in',
-                    'Someone filled in a form',
-                    'airporttesting@outlook.com',
-                    ['airporttesting@outlook.com'],
-                )
+            # dic = {
+            #         'body': 'A user has filled in a form',
+            #         'approved_or_rejected': '',
+            #         'approved_or_rejected_text': ''
+            #     }
+            # html_tpl_path = 'email-template/email.html'
+            # context_data =  {'dic': dic}
+            # email_html_template = get_template(html_tpl_path).render(context_data)
+            # receiver_email = 'airporttesting@outlook.com'
+            # email_msg = EmailMessage('New user Application', 
+            #                             email_html_template, 
+            #                             settings.APPLICATION_EMAIL,
+            #                             [receiver_email],
+            #                             reply_to=[settings.APPLICATION_EMAIL]
+            #                             )
+            # # this is the crucial part that sends email as html content but not as a plain text
+            # email_msg.content_subtype = 'html'
+            # email_msg.send(fail_silently=False)
+            
             for f in request.FILES.getlist('files'):
                 inputs = FileInput(request.FILES, request.POST)
                 if inputs.is_valid():
@@ -114,9 +127,13 @@ def ViewUser(request, form_id):
             # APPROVED
 
             if approved_or_not == 'APPROVED':
-
+                dic = {
+                    'body': email_extra_body,
+                    'approved_or_rejected': 'Approved',
+                    'approved_or_rejected_text': 'You have been approved access to the Hato Communication rooms'
+                }
                 html_tpl_path = 'email-template/email.html'
-                context_data =  {'name': 'JK'}
+                context_data =  {'dic': dic}
                 email_html_template = get_template(html_tpl_path).render(context_data)
                 receiver_email = email
                 email_msg = EmailMessage('Welcome from airport Coms', 
@@ -135,12 +152,31 @@ def ViewUser(request, form_id):
                 #     [email,],
                 # )
             else:
-                send_mail(
-                    'Subject here',
-                    f'You have been rejected \n {email_extra_body}',
-                    'airporttesting@outlook.com',
-                    [email,],
-                )
+                dic = {
+                    'body': email_extra_body,
+                    'approved_or_rejected': 'Rejected',
+                    'approved_or_rejected_text': 'You have been Rejected to access the Hato Communication rooms'
+                }
+                html_tpl_path = 'email-template/email.html'
+                context_data =  {'dic': dic}
+                email_html_template = get_template(html_tpl_path).render(context_data)
+                receiver_email = email
+                email_msg = EmailMessage('Welcome from airport Coms', 
+                                            email_html_template, 
+                                            settings.APPLICATION_EMAIL,
+                                            [receiver_email],
+                                            reply_to=[settings.APPLICATION_EMAIL]
+                                            )
+                # this is the crucial part that sends email as html content but not as a plain text
+                email_msg.content_subtype = 'html'
+                email_msg.send(fail_silently=False)
+                
+                # send_mail(
+                #     'Subject here',
+                #     f'You have been rejected \n {email_extra_body}',
+                #     'airporttesting@outlook.com',
+                #     [email,],
+                # )
             return redirect('Form:adminpage')   
 
     dic = {
