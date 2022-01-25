@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os 
 
-import django_heroku
+# import django_heroku
 import smtplib
 from pathlib import Path
 
@@ -30,9 +30,10 @@ SECRET_KEY = 'django-insecure-falbz5fuxc@((-2k$lurvtw63fgcluk%m*83yo87ta*&a4+3vz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['comsroom.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','comsrooms.azurewebsites.net','169.254.129.3']
+CSRF_TRUSTED_ORIGINS = ['https://comsrooms.azurewebsites.net','https://*.127.0.0.1']
 
-
+# https://
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,11 +46,12 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'FormPage',
     'users',
-    'storages',
+    # 'storages',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,6 +132,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -138,7 +142,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LOGIN_REDIRECT_URL = '/admin-page'
@@ -156,8 +160,8 @@ server = smtplib.SMTP('smtp.office365.com', 587)
 server.starttls()
 
 
-# AWS_ACCESS_KEY_ID = '='
-# AWS_SECRET_ACCESS_KEY = '='
+# AWS_ACCESS_KEY_ID = 'AKIAUSKVGITX3IWEUBKJ'
+# AWS_SECRET_ACCESS_KEY = '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'
 # AWS_STORAGE_BUCKET_NAME = 'airport-comuni'
 
 # AWS_S3_FILE_OVERWRITE = False
@@ -170,4 +174,4 @@ server.starttls()
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

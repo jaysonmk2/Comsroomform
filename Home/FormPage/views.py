@@ -22,24 +22,24 @@ def FormPage(request):
         
         if form.is_valid():
             bigform = form.save() 
-            # dic = {
-            #         'body': 'A user has filled in a form',
-            #         'approved_or_rejected': '',
-            #         'approved_or_rejected_text': ''
-            #     }
-            # html_tpl_path = 'email-template/email.html'
-            # context_data =  {'dic': dic}
-            # email_html_template = get_template(html_tpl_path).render(context_data)
-            # receiver_email = 'airporttesting@outlook.com'
-            # email_msg = EmailMessage('New user Application', 
-            #                             email_html_template, 
-            #                             settings.APPLICATION_EMAIL,
-            #                             [receiver_email],
-            #                             reply_to=[settings.APPLICATION_EMAIL]
-            #                             )
-            # # this is the crucial part that sends email as html content but not as a plain text
-            # email_msg.content_subtype = 'html'
-            # email_msg.send(fail_silently=False)
+            dic = {
+                    'body': 'A user has filled in a form',
+                    'approved_or_rejected': '',
+                    'approved_or_rejected_text': ''
+                }
+            html_tpl_path = 'email-template/email.html'
+            context_data =  {'dic': dic}
+            email_html_template = get_template(html_tpl_path).render(context_data)
+            receiver_email = 'airporttesting@outlook.com'
+            email_msg = EmailMessage('New user Application', 
+                                        email_html_template, 
+                                        settings.APPLICATION_EMAIL,
+                                        [receiver_email],
+                                        reply_to=[settings.APPLICATION_EMAIL]
+                                        )
+            # this is the crucial part that sends email as html content but not as a plain text
+            email_msg.content_subtype = 'html'
+            email_msg.send(fail_silently=False)
             
             for f in request.FILES.getlist('files'):
                 inputs = FileInput(request.FILES, request.POST)
