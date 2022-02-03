@@ -150,14 +150,16 @@ LOGIN_REDIRECT_URL = '/admin-page'
 LOGIN_URL = '/login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST= 'smtp-mail.outlook.com'
+# EMAIL_HOST= 'smtp-mail.outlook.com'
+EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'airporttesting@outlook.com'
-EMAIL_HOST_PASSWORD = 'airportsita12'
+# EMAIL_HOST_USER = 'airporttesting@outlook.com'
+EMAIL_HOST_USER = 'nullwandere@gmail.com'
+EMAIL_HOST_PASSWORD = 'bswysvzmrwzrzgck'
 EMAIL_USE_TLS = True
-APPLICATION_EMAIL = 'Admin<airporttesting@outlook.com>'
-server = smtplib.SMTP('smtp.office365.com', 587) 
-server.starttls()
+APPLICATION_EMAIL = 'Admin<nullwandere@gmail.com>'
+# server = smtplib.SMTP('smtp.office365.com', 587) 
+# server.starttls()
 
 
 # AWS_ACCESS_KEY_ID = 'AKIAUSKVGITX3IWEUBKJ'

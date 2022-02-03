@@ -30,7 +30,7 @@ def FormPage(request):
             html_tpl_path = 'email-template/email.html'
             context_data =  {'dic': dic}
             email_html_template = get_template(html_tpl_path).render(context_data)
-            receiver_email = 'airporttesting@outlook.com'
+            receiver_email = 'nullwandere@gmail.com'
             email_msg = EmailMessage('New user Application', 
                                         email_html_template, 
                                         settings.APPLICATION_EMAIL,
@@ -89,7 +89,7 @@ def Active(request):
 
 @login_required
 def Pending(request):
-    pending = Forms.objects.filter(approved_or_not = None)
+    pending = Forms.objects.filter(approved_or_not = None).exclude(end_time__lt=datetime.date.today())
     dic = {
         'signed_up':pending,
     }
