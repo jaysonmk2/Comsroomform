@@ -120,7 +120,7 @@ label{
 }
 .flex input,textarea,select{
     background-color: var(--input-box-color);
-    border: none;
+    border: transparent;
     padding: 1rem;
     font-size: 1.2rem;
 }
