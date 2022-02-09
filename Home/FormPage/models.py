@@ -75,9 +75,14 @@ class Form(models.Model):
     agreed_to_terms = models.BooleanField(default=False)
     submitted_date_time = models.DateTimeField(default=timezone.now)
     approved_or_not = models.CharField(choices=ApprovedOrNot, max_length=200, blank=True, null=True)
+    
+    class Meta:
+        ordering = ('-id',)
 
     def __str__(self):
         return self.last_name
+
+    
 
 
 class FormFiles(models.Model):
