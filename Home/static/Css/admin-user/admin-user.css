@@ -1,3 +1,14 @@
+
+.background-poster{
+    background-color: rgb(174, 217, 255);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    right:0;
+    z-index: -300;
+}
+
 .wrapper{
     width: 80%;
     margin: 0 auto;
@@ -83,14 +94,19 @@ select{
     border: none;
     padding: 1rem 1rem;
     width: 100%;
-    background-color: rgb(0, 153, 255);
+    background-color: #00ab91;
     transition:0.5s;
     margin: 2rem 0;
 }
 .submit:hover{
-    background-color: rgb(0, 82, 136);
+    background-color: #00dbba;
 }
 
+.line{
+    
+    width: 20px;
+    background-color: #00ab91;
+}
 @media (max-width: 950px){
     .wrapper{
         width: 90%;

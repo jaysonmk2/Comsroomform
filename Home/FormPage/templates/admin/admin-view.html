@@ -5,11 +5,12 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="background-color">
+        <div class="background-poster"></div>
             <div class="wrapper">
                 {% for person in dic.signed_up %}
                     <a href="{%url 'Form:user' person.id%}" class="user-link">
                         <div class="row">
+                            <div class="line"></div>
                             <div class="row-text q">
                                 <p class="small-text">Company Name</p>
                                 <p class="big-text">{{person.company_name}}</p>
@@ -47,7 +48,7 @@
                     </a>
                 {% endfor %}
             </div>
-        </div>
+        
         <!-- <a href="{% url 'logout' %}">yoooo</a> -->
     {% else %}
         <p>login again</p>

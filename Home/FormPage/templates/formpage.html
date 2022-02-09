@@ -77,7 +77,12 @@
                     </div>
                 </div>
 
-                <button class="next-tab">next</button>
+                
+                <div class="flex-buttons">
+                    <p></p>
+                    <button class="next-tab">NEXT</button>
+                </div>
+               
             </div>
 
             <div class="tab2">
@@ -159,11 +164,12 @@
                         {{dic.fileinputs.files}}
                     </div>
                 </div>
-                <button class="next-tab1">next</button>
-                <button class="previous-tab">previous</button>
+               
+                <div class="flex-buttons">
+                    <button class="previous-tab">PREVIOUS</button>
+                    <button class="next-tab1">NEXT</button>
+                </div>
             </div>
-
-
 
             <div class="tab3">
                 <p class="condition-text condition-title"><b>User Responsibilities and Appropriate Use of  Access Agreement</b></p>
@@ -208,15 +214,16 @@
                     data center/communication room access being revoked
                 </li>
                 </ol>
-                
-                <button class="previous-tab">previous</button>
 
                 <p class="condition-text">I have read the terms and conditions of my data center/communication room access and authorizations</p>
                 <div class="agree-flex">
                     {{dic.form.agreed_to_terms}}
                     <p class="agree-text"><b>I understand these terms and conditions, and I agree to abide by them.</b></p>
                 </div>
-                <button type="submit" value="submit" class="submit">SUBMIT</button>
+                <div class="flex-buttons">
+                    <button class="previous-tab">PREVIOUS</button>
+                    <button type="submit" value="submit" class="submit">SUBMIT</button>
+                </div>
             </div>
         </form>
     </div>

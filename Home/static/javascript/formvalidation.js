@@ -50,8 +50,6 @@ function NextTab1() {
 
 
 check = document.getElementById("id_required_access")
-
-
 starttime = document.getElementById("id_start_time")
 endtime = document.getElementById("id_end_time")
 
@@ -59,14 +57,11 @@ endtime = document.getElementById("id_end_time")
 check.addEventListener('change', (event) => {
     if (event.target.value === "TEMPORARY"){
         tempOrNot = false
-        
         starttime.required = true;
         endtime.required = true;
         
-        
         starttime.addEventListener('change', (event) =>{
             console.log(tempOrNot)
-            if(tempOrNot === false){
                 if(starttime.value !== "" && endtime.value !== ""){
                     console.log(event.target.value)
                     tempOrNot = true
@@ -74,11 +69,9 @@ check.addEventListener('change', (event) => {
                 }else{
                     tempOrNot = false
                 }
-            }
         })
         endtime.addEventListener('change', (event) =>{
             console.log(tempOrNot)
-            if(tempOrNot === false){
                 if(starttime.value !== "" && endtime.value !== ""){
                     console.log(event.target.value)
                     tempOrNot = true
@@ -86,16 +79,15 @@ check.addEventListener('change', (event) => {
                 }else{
                     tempOrNot = false
                 }
-            }
         })
 
 
-        if(tab2Tabs[1].value !== "" && tab2Tabs[2].value !== ""){
-            console.log("YOYOYOYOYOY")
-            tempOrNot = true
+        // if(tab2Tabs[1].value !== "" && tab2Tabs[2].value !== ""){
+        //     console.log("YOYOYOYOYOY")
+        //     tempOrNot = true
             
-        }
-    }else if(event.target.value === "STANDARD"){
+        // }
+    }else if(event.target.value === "PERMANENT"){
         starttime.required = false;
         endtime.required = false;
         tempOrNot = true

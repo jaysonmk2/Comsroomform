@@ -9,7 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 RequestAccessChoices = [
-        ('STANDARD', 'Standard'),
+        ('PERMANENT', 'Permanent'),
         ('TEMPORARY', 'Temporary'),
 ]
 

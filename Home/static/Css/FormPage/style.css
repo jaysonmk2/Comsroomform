@@ -131,7 +131,7 @@ label{
 }
 .big-input-container textarea{
     width: 100%;
-    height: 150px;
+    height: 80px;
     resize: vertical;
     
 }
@@ -191,9 +191,9 @@ label{
     color: var(--primary-color)
 }
 .submit{
+    width:100%;
     border: none;
     background-color: var(--primary-color);
-    width: 100%;
     padding: 1rem 0 1rem 0;
     margin: 2rem 0;
     transition: 0.3s;
@@ -211,6 +211,42 @@ label{
     border:3px solid #f1f9ff;
     border-radius: 1rem;
 }
+
+.next-tab,.previous-tab,.next-tab1{
+    border: none;
+    background-color: #00ab91;
+    width:100%;
+    padding: 1rem 0 1rem 0;
+    margin: 2rem 0;
+    transition: 0.3s;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.flex-buttons{
+    display:flex;
+    justify-content: space-between;
+}
+
+.next-tab:hover,.previous-tab:hover,.next-tab1:hover{
+    background-color: #00e2c0;
+}
+
+.thanks-link{
+    color:black;
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    background-color: #00ab91;
+    transition: 0.5s;
+    
+}
+.thanks-link:hover{
+    background-color: #59ffe6;
+}
+
+
 
 
 @media (max-width: 950px){
