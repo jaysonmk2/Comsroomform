@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/f0fb3898-dbed-498b-b04c-8998d9c0d43b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/comsrooms",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/f0fb3898-dbed-498b-b04c-8998d9c0d43b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/comsrooms"
 }
