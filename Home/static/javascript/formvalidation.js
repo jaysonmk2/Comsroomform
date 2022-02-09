@@ -9,6 +9,8 @@ previousTab = document.getElementsByClassName('previous-tab')
 previousTab[0].addEventListener("click", PrevTab);
 previousTab[1].addEventListener("click", PrevTab);
 
+shutoffCheck = document.getElementById('id_agreed_to_terms')
+
 
 var tempOrNot = false
 console.log(tempOrNot)
@@ -16,6 +18,7 @@ hide()
 
 var tab1Tabs = document.querySelectorAll(".tab1 input,textarea")
 function NextTab() {
+    
     document.body.scrollTop = document.documentElement.scrollTop = 0;
    
 
@@ -100,6 +103,7 @@ check.addEventListener('change', (event) => {
 
 
 function PrevTab() {
+    shutoffCheck.checked = false
     activeTab = activeTab - 1
     hide()
     // for (let index = 0; index < hello.length; index++) {
