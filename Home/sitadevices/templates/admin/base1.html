@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+    
+    .sidenav {
+      height: 100%;
+      width: 300px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #16AFD6;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+    
+    .sidenav p {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      margin: 1rem;
+    }
+    .sidenav li {
+      margin-bottom: 0.4rem;
+      list-style: none;
+      padding-left: 0.4rem;
+      color: rgb(223, 223, 223);
+    }
+    
+    .sidenav a:hover {
+      color: rgb(170, 170, 170);
+    }
+    
+    .main {
+      margin-left: 300px; /* Same as the width of the sidenav */
+    }
+    
+    .a-title{
+        font-size: 1.6rem;
+        color:white;
+        margin-bottom:0.3rem;
+        text-decoration: none;
+    }
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav p {font-size: 18px;}
+    }
+
+    .h1{
+        padding:0 0.5rem;
+        font-size: 2.5rem;
+        color: white;
+    }
+    .h4{
+        padding-left:0.5rem;
+        font-size: 1.5rem;
+        color:white;
+        margin:0;
+    }
+
+    .user{
+        background-color: #0498BE;
+        padding:1.5rem 0;
+        text-align: center;
+    }
+
+
+    </style>
+    </head>
+    <body>
+    
+    <div class="sidenav">
+        <div class="user">
+            <h1 class="h1">Welcome</h1>
+            <h6 class="h4">{{request.user.username}}</h6>
+        </div>
+      <p href="#">Active Components</p>
+        <ul>
+            <li><a href="" class="a-title">help</a></li>
+            <li><a href="" class="a-title">hi</a></li>
+        </ul>
+      <p href="#">Services</p>
+      <p href="#">Clients</p>
+    </div>
+    
+    <div class="main">
+        <div class="rel">{% block content %}{% endblock%}</div>
+    </div>
+       
+    </body>
+</html>

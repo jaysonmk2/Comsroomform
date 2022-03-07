@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FormPage,ThanksPage, AdminPage, Active, Pending, Eliminated, ViewUser
+from .views import FormPage,ThanksPage, AdminPage, Active, Pending, Eliminated, ViewUser, MasterAdmin
 from django.conf import settings
 from django.urls.conf import include
 from django.conf.urls.static import static
@@ -14,6 +14,8 @@ urlpatterns = [
     path('admin-page/pending', Pending, name="pending"),
     path('admin-page/eliminated', Eliminated, name="eliminated"),
     path('<int:form_id>',ViewUser, name='user' ),
+
+    path('master', MasterAdmin, name='master')
 ]
 
 if settings.DEBUG == True:
