@@ -118,6 +118,7 @@ def ViewUser(request, form_id):
     form = Form(instance=user)
     if request.method =='POST':
         form = Form(request.POST, instance=user)
+        
         if form.is_valid():
             form.save()
             email = form.cleaned_data['email']
