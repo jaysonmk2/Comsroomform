@@ -1,0 +1,13 @@
+{% extends 'admin/base1.html' %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="{%url 'device:switchInp'%}"  class="swithc-inpform" method="POST">
+    {%csrf_token%}
+    
+    {{dic.form}}
+    
+    <p>number of ports</p>
+    <input type="number" name="port-amount">
+    <button type="submit" value="submit">submit</button>
+</form>
+{% endblock  %}
