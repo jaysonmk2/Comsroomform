@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import SwitchInp
-from .models import Port
+from .models import Port,Switch
 from django.shortcuts import redirect, render, get_object_or_404
 # Create your views here.
 
@@ -27,15 +27,6 @@ def SwitchForm(request):
             
             port_count = 0
 
-            # for f in request.FILES.getlist('files'):
-            #     inputs = FileInput(request.FILES, request.POST)
-            #     if inputs.is_valid():
-            #         fileinp = inputs.save(commit=False)
-            #         fileinp.files = f
-            #         fileinp.form_fk = bigform
-            #         fileinp.save()
-            #     else:
-            #       pass
             return redirect('device:switchInp')
         else:
             pass
@@ -46,3 +37,19 @@ def SwitchForm(request):
         'form': form, 
     }
     return render(request, 'admin/addswitch.html', {'dic': dic})
+
+def SwitchViews(request):
+    switches = Switch.objects.all()
+    dic = {
+        'switch': switches, 
+    }
+    return render(request, 'admin/switchlist.html', {'dic': dic})
+
+def SwitchIndividualView(request, switch_id):
+    switches = Switch.objects.filter(id = switch_id)
+    
+    print(switches)
+    dic = {
+        'switch': switches, 
+    }
+    return render(request, 'admin/individualswitch.html', {'dic': dic})
