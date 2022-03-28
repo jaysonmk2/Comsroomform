@@ -1,0 +1,15 @@
+{% extends 'admin/base1.html' %}
+
+{% block content %}
+
+<button> <a href="{%url 'device:customerinp' %}">add customer</a></button>
+{% for customer in dic.customer %}
+
+    <a href="{%url 'device:customerind' customer.id%}">
+        <p>{{customer.phone}}</p>
+    </a>
+
+    <button><a href="{%url 'device:customerdel' customer.id%}">delete</a></button>
+    <button><a href="{%url 'device:customerupd' customer.id%}">update</a></button>
+{% endfor %}
+{% endblock  %}

@@ -1,9 +1,9 @@
 from django import forms
-from . models import Switch, Port
+from . models import Customer
 
 
-class SwitchInp(forms.ModelForm):
+class CustomerInp(forms.ModelForm):
     class Meta:
-        model=Switch
+        model=  Customer
         fields='__all__'
         exclude = ['submitted_date_time',]

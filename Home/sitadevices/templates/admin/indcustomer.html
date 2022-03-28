@@ -1,0 +1,11 @@
+{% extends 'admin/base1.html' %}
+
+{% block content %}
+{% for c in dic.customer %}
+    {{c.phone}}
+    {{c.email}}
+{% endfor %}
+
+
+
+{% endblock  %}

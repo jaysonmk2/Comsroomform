@@ -1,0 +1,12 @@
+{% extends 'admin/base1.html' %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="{%url 'device:customerinp'%}"  class="" method="POST">
+    {%csrf_token%}
+    
+    {{dic.form}}
+    
+    
+    <button type="submit" value="submit">submit</button>
+</form>
+{% endblock  %}

@@ -1,9 +1,0 @@
-{% extends 'admin/base1.html' %}
-
-{% block content %}
-{% for switch in dic.switch %}
-    <a href="{%url 'device:individualswitch' switch.id%}">
-        <p>{{switch.switch_name}}</p>
-    </a>
-{% endfor %}
-{% endblock  %}
