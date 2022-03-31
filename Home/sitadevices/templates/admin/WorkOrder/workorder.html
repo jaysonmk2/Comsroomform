@@ -1,0 +1,17 @@
+{% extends '../base1.html' %}
+
+{% block content %}
+
+<button> <a href="{%url 'device:workorderinp' %}">add Workorder</a></button>
+{% for workorder in dic.workorder %}
+
+    <a href="{%url 'device:workorderind' workorder.id%}">
+        <p>{{workorder.id}}</p>
+        <p>{{workorder.company_id}}</p>
+        <p>{{workorder.vlan_number}}</p>
+    </a>
+
+    <button><a href="{%url 'device:workorderdel' workorder.id%}">delete</a></button>
+    <button><a href="{%url 'device:workorderupd' workorder.id%}">update</a></button>  
+{% endfor %}
+{% endblock  %}

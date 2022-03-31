@@ -85,8 +85,13 @@
             <h6 class="h4">{{request.user.username}}</h6>
         </div>
       <p href="#">Active Components</p>
+      
         <ul>
+          
             <li><a href="{%url 'device:customerlist'%}" class="a-title">Customers</a></li>
+            <li><a href="{%url 'device:customerVlanlist'%}" class="a-title">Customer Vlan</a></li>
+            <li><a href="{%url 'device:workorderlist'%}" class="a-title">Work Order</a></li>
+            <li><a href="{%url 'device:locationlist'%}" class="a-title">Locations</a></li>
             
         </ul>
       <p href="#">Services</p>

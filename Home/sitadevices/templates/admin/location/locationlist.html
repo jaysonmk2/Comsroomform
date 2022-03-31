@@ -1,0 +1,40 @@
+{% extends '../base1.html' %}
+
+{% block content %}
+
+
+<h1>Building</h1>
+<button> <a href="{%url 'device:buildinginp' %}">add Building</a></button>
+{% for building in dic.building %}
+
+        <p>{{building.building_desc}}</p>
+    
+
+    <button><a href="{%url 'device:buildingdel' building.id%}">delete</a></button>
+    <button><a href="{%url 'device:buildingupd' building.id%}">update</a></button>  
+{% endfor %}
+
+
+<h1>Office</h1>
+<button> <a href="{%url 'device:officeinp' %}">add Office</a></button>
+{% for office in dic.office %}
+
+        <p>{{office.room}}</p>
+        <p>{{office.buiding_code}}</p>
+
+    <button><a href="{%url 'device:officedel' office.id%}">delete</a></button>
+    <button><a href="{%url 'device:officeupd' office.id%}">update</a></button>  
+{% endfor %}
+
+
+<h1>Communication room</h1>
+<button> <a href="{%url 'device:comsinp' %}">add Communication Room</a></button>
+{% for comms in dic.comms%}
+
+        <p>{{comms.building_code}}</p>
+        <p>{{comms.commroomname}}</p>
+        
+    <button><a href="{%url 'device:commsdel' comms.id%}">delete</a></button>
+    <button><a href="{%url 'device:commsupd' comms.id%}">update</a></button>  
+{% endfor %}
+{% endblock  %}

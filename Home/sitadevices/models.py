@@ -9,6 +9,16 @@ yesno = [
         ('NO', 'no'),
 ]
 
+usages = [
+        ('ACCESS', 'access'),
+        ('VOICE', 'voice'),
+]
+
+ip = [
+        ('STATIC', 'static'),
+        ('DHCP', 'dhcp'),
+]
+
 class Customer(models.Model):
     company_name = models.CharField(max_length=255)
     contact_person = models.CharField(max_length=255)
@@ -17,13 +27,39 @@ class Customer(models.Model):
     active = models.CharField(choices=yesno, max_length=200)
     submitted_date_time = models.DateTimeField(default=timezone.now)
 
-# class Room(models.Model):
-#     room = models.CharField(max_length=255)
 
-# class Building(models.Model):
-#     room = models.ManyToManyField(Room)
-#     building_desc = models.TextField()
+class CustomerVlan(models.Model):
+    custumor = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    vlan_number = models.IntegerField()
+    usage = models.CharField(choices=usages, max_length=200)
+    config_date = models.DateTimeField()
+    vlan_description = models.TextField()
+    ip_config = models.CharField(choices=ip, max_length=200)
+    dhcp_ip_range = models.CharField(max_length=50)
+    lan_ip_range = models.CharField(max_length=50)
+    lan_subnet_mask = models.CharField(max_length=50)
+    wan_public_ip = models.CharField(max_length=50)
+    wan_subnet_mask = models.CharField(max_length=50)
+    bandwidth = models.IntegerField()
+    additional_config = models.TextField()
+    remark = models.TextField()
+    disconnection_date = models.DateField(null=True, blank=True)
+    submitted_date_time = models.DateTimeField(default=timezone.now)
 
-# class CommmunicationRoom(models.Model):
-#     building_code = models.ForeignKey(Building, on_delete=models.CASCADE)
-#     commroomname = models.CharField(max_length=255)
+
+class WorkOrder(models.Model):
+        company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+        vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
+        submitted_date_time = models.DateTimeField(default=timezone.now)
+
+
+class Building(models.Model):
+    building_desc = models.TextField()
+
+class Room(models.Model):
+    room = models.CharField(max_length=255)
+    building_code = models.ForeignKey(Building, on_delete=models.CASCADE)
+
+class CommmunicationRoom(models.Model):
+    building_code = models.ForeignKey(Building, on_delete=models.CASCADE)
+    commroomname = models.CharField(max_length=255)

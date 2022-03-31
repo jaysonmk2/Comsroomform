@@ -1,0 +1,18 @@
+{% extends '../base1.html' %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="{%url 'device:workorderinp'%}"  class="" method="POST">
+    {%csrf_token%}
+    
+    {{dic.form}}
+    <select name="option">
+        {% for f in dic.filter %}
+            <option value="{{f.id}}">hellp</option>
+        {% endfor %}
+    </select>
+    <input name="hi">
+   
+    
+    <button type="submit" value="submit">submit</button>
+</form>
+{% endblock  %}

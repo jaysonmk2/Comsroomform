@@ -1,0 +1,15 @@
+{% extends '../base1.html' %}
+
+{% block content %}
+
+<button> <a href="{%url 'device:customerVlaninp' %}">add customerVlan</a></button>
+{% for customerVlan in dic.customerVlan %}
+
+    <a href="{%url 'device:customerVlanind' customerVlan.id%}">
+        <p>{{customerVlan.vlan_number}}</p>
+    </a>
+
+    <button><a href="{%url 'device:customerVlandel' customerVlan.id%}">delete</a></button>
+    <button><a href="{%url 'device:customerVlanupd' customerVlan.id%}">update</a></button> 
+{% endfor %}
+{% endblock  %}

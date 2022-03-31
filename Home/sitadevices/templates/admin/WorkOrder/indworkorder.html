@@ -1,0 +1,12 @@
+{% extends 'admin/base1.html' %}
+
+{% block content %}
+{% for workorder in dic.workorder %}
+
+    {{workorder.company_id}}
+    {{workorder.vlan_number}}
+{% endfor %}
+
+
+
+{% endblock  %}
