@@ -40,4 +40,16 @@ urlpatterns =[
     path('del/commsroom/<int:comms_id>', CommsDel, name='commsdel'),
     path('upd/commsroom/<int:comms_id>', CommsUpd, name='commsupd'),
 
+    path('connection', Connection, name="connectionlist"),
+    path('connectioninp', ConnectionInput, name='connectioninp'),
+    path('vlan/<int:customerVlan_id>', CustomerVlanInd, name='customerVlanind'),
+    path('del/vlan/<int:customerVlan_id>', CustomerVlanDel, name='customerVlandel'),
+    path('upd/vlan/<int:customerVlan_id>', CustomerVlanUpd, name='customerVlanupd'),
+
+    path('switch', Switchs, name="switchlist"),
+    path('switchinp', SwitchInput, name='switchinp'),
+    path('vlan/<int:customerVlan_id>', CustomerVlanInd, name='customerVlanind'),
+    path('del/vlan/<int:customerVlan_id>', CustomerVlanDel, name='customerVlandel'),
+    path('upd/vlan/<int:customerVlan_id>', CustomerVlanUpd, name='customerVlanupd'),
+
 ]

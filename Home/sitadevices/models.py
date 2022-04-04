@@ -53,6 +53,12 @@ class WorkOrder(models.Model):
         submitted_date_time = models.DateTimeField(default=timezone.now)
 
 
+
+class Connections(models.Model):
+    company = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customerVlan = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
+
+
 class Building(models.Model):
     building_desc = models.TextField()
 
@@ -63,3 +69,7 @@ class Room(models.Model):
 class CommmunicationRoom(models.Model):
     building_code = models.ForeignKey(Building, on_delete=models.CASCADE)
     commroomname = models.CharField(max_length=255)
+
+
+class Switch(models.Model):
+    comms_room = models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)

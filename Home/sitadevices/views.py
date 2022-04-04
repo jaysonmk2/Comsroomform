@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .forms import CustomerInp,CustomerVlanInp,WorkOrderInp,BuildingForm,CommsForm,OfficeForm
-from .models import Customer,CustomerVlan,WorkOrder,Building,Room,CommmunicationRoom
+from .forms import CustomerInp,CustomerVlanInp,WorkOrderInp,BuildingForm,CommsForm,OfficeForm,ConnectionsForm,SwitchForm
+from .models import Customer,CustomerVlan,WorkOrder,Building,Room,CommmunicationRoom, Connections, Switch
 from django.shortcuts import redirect, render, get_object_or_404
 # Create your views here.
 
@@ -355,6 +355,136 @@ def CommsUpd(request,comms_id):
     return render(request, 'admin/location/updcomms.html',{'dic': dic})
 ######################################### CUSTOMERVLAN ######################################################
 
+
+######################################### WORKORDER ######################################################
+def Connection(request):
+    connection = Connections.objects.all()
+    dic = {
+        'connection': connection, 
+    }
+    return render(request, 'admin/connection/connection.html', {'dic': dic})
+
+def ConnectionInput(request):
+    if request.method == "POST":
+        form = ConnectionsForm(request.POST)
+        if form.is_valid():  
+            form.save()
+
+            return redirect('device:connectionlist')
+        else:
+            pass
+    else:
+        form = ConnectionsForm()
+        
+    dic = {
+        'form': form, 
+    }
+    return render(request, 'admin/connection/addconnection.html', {'dic': dic})
+
+def WorkOrderInd(request, workorder_id):
+    workorder = WorkOrder.objects.filter(id = workorder_id)
+
+    dic = {
+        'workorder': workorder, 
+    }
+
+    return render(request, 'admin/WorkOrder/indworkorder.html', {'dic': dic})
+
+def WorkOrderDel(request,workorder_id):
+    c = WorkOrder.objects.get(pk=workorder_id)
+    c.delete()
+    return redirect('device:workorderlist') 
+
+def WorkOrderUpd(request,workorder_id):
+    filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
+    update = WorkOrder.objects.get(pk=workorder_id)
+    form = WorkOrderInp(instance=update)
+    if request.method =='POST':
+        form = WorkOrderInp(request.POST, instance=update)
+        email_extra_body = request.POST['option']
+        print(email_extra_body)
+        filte = CustomerVlan.objects.get(id = email_extra_body)
+        print(filte)
+        if form.is_valid():
+            form.save(commit=False)
+            form.save()
+            WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
+            return redirect('device:workorderlist')
+    
+    dic = {
+        'id': update,
+        'form': form,
+        'filter':filter,
+        
+    }
+
+    return render(request, 'admin/WorkOrder/workorderupd.html',{'dic': dic})
+######################################### WORKORDER ######################################################
+
+######################################### WORKORDER ######################################################
+def Switchs(request):
+    switch = Switch.objects.all()
+    dic = {
+        'switch': switch, 
+    }
+    return render(request, 'admin/switch/switch.html', {'dic': dic})
+
+def SwitchInput(request):
+    if request.method == "POST":
+        form = SwitchForm(request.POST)
+        if form.is_valid():  
+            form.save()
+
+            return redirect('device:switchlist')
+        else:
+            pass
+    else:
+        form = SwitchForm()
+        
+    dic = {
+        'form': form, 
+    }
+    return render(request, 'admin/switch/addswitch.html', {'dic': dic})
+
+def WorkOrderInd(request, workorder_id):
+    workorder = WorkOrder.objects.filter(id = workorder_id)
+
+    dic = {
+        'workorder': workorder, 
+    }
+
+    return render(request, 'admin/WorkOrder/indworkorder.html', {'dic': dic})
+
+def WorkOrderDel(request,workorder_id):
+    c = WorkOrder.objects.get(pk=workorder_id)
+    c.delete()
+    return redirect('device:workorderlist') 
+
+def WorkOrderUpd(request,workorder_id):
+    filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
+    update = WorkOrder.objects.get(pk=workorder_id)
+    form = WorkOrderInp(instance=update)
+    if request.method =='POST':
+        form = WorkOrderInp(request.POST, instance=update)
+        email_extra_body = request.POST['option']
+        print(email_extra_body)
+        filte = CustomerVlan.objects.get(id = email_extra_body)
+        print(filte)
+        if form.is_valid():
+            form.save(commit=False)
+            form.save()
+            WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
+            return redirect('device:workorderlist')
+    
+    dic = {
+        'id': update,
+        'form': form,
+        'filter':filter,
+        
+    }
+
+    return render(request, 'admin/WorkOrder/workorderupd.html',{'dic': dic})
+######################################### WORKORDER ######################################################
 
 
 

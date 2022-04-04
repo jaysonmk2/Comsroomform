@@ -1,0 +1,12 @@
+{% extends 'admin/base1.html' %}
+
+{% block content %}
+{% for vlan in dic.customerVlan %}
+yo
+    {{vlan.vlan_number}}
+    {{vlan.usage}}
+{% endfor %}
+
+
+
+{% endblock  %}

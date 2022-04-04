@@ -1,0 +1,16 @@
+{% extends '../base1.html' %}
+
+{% block content %}
+
+<button> <a href="{%url 'device:connectioninp' %}">add Connection</a></button>
+{% for connection in dic.connection %}
+
+    {% comment %} <a href="{%url 'device:customerVlanind' customerVlan.id%}"> {% endcomment %}
+        <p>{{connection.company}}</p>
+    {% comment %} </a> {% endcomment %}
+
+    {% comment %} <button><a href="{%url 'device:customerVlandel' customerVlan.id%}">delete</a></button>
+    <button><a href="{%url 'device:customerVlanupd' customerVlan.id%}">update</a></button>  {% endcomment %}
+
+{% endfor %}
+{% endblock  %}

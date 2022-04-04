@@ -1,5 +1,5 @@
 from django import forms
-from . models import Customer,CustomerVlan, WorkOrder, Room,CommmunicationRoom,Building
+from . models import Customer,CustomerVlan, WorkOrder, Room,CommmunicationRoom,Building, Connections, Switch
 
 
 class CustomerInp(forms.ModelForm):
@@ -40,4 +40,14 @@ class OfficeForm(forms.ModelForm):
 class CommsForm(forms.ModelForm):
     class Meta:
         model=  CommmunicationRoom
+        fields='__all__'
+
+class ConnectionsForm(forms.ModelForm):
+    class Meta:
+        model=  Connections
+        fields='__all__'
+
+class SwitchForm(forms.ModelForm):
+    class Meta:
+        model=  Switch
         fields='__all__'
