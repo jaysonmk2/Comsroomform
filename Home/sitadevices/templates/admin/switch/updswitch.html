@@ -1,7 +1,7 @@
 {% extends 'admin/base1.html' %}
 
 {% block content %}
-<form enctype="multipart/form-data" action="{%url 'device:customerVlanupd' dic.id.id%}"  class="" method="POST">
+<form enctype="multipart/form-data" action="{%url 'device:switchupd' dic.id.id%}"  class="" method="POST">
     {%csrf_token%}
     
     {{dic.form}}

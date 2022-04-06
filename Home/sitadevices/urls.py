@@ -42,14 +42,14 @@ urlpatterns =[
 
     path('connection', Connection, name="connectionlist"),
     path('connectioninp', ConnectionInput, name='connectioninp'),
-    path('vlan/<int:customerVlan_id>', CustomerVlanInd, name='customerVlanind'),
-    path('del/vlan/<int:customerVlan_id>', CustomerVlanDel, name='customerVlandel'),
-    path('upd/vlan/<int:customerVlan_id>', CustomerVlanUpd, name='customerVlanupd'),
+    path('connection/<int:connection_id>', ConnectionInd, name='connectionind'),
+    path('del/connection/<int:connection_id>', ConnectionDel, name='connectiondel'),
+    path('upd/connection/<int:connection_id>', ConnectionUpd, name='connectionupd'),
 
     path('switch', Switchs, name="switchlist"),
     path('switchinp', SwitchInput, name='switchinp'),
-    path('vlan/<int:customerVlan_id>', CustomerVlanInd, name='customerVlanind'),
-    path('del/vlan/<int:customerVlan_id>', CustomerVlanDel, name='customerVlandel'),
-    path('upd/vlan/<int:customerVlan_id>', CustomerVlanUpd, name='customerVlanupd'),
+    path('switch/<int:switch_id>', SwitchInd, name='switchind'),
+    path('del/switch/<int:switch_id>', SwitchDel, name='switchdel'),
+    path('upd/switch/<int:switch_id>', SwitchUpd, name='switchupd'),
 
 ]

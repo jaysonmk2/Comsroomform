@@ -5,12 +5,12 @@
 <button> <a href="{%url 'device:switchinp' %}">add switch</a></button>
 {% for switch in dic.switch %}
 
-    {% comment %} <a href="{%url 'device:customerVlanind' customerVlan.id%}"> {% endcomment %}
+    <a href="{%url 'device:switchind' switch.id%}"> 
         <p>{{switch.comms_room}}</p>
-    {% comment %} </a> {% endcomment %}
+    </a> 
 
-    {% comment %} <button><a href="{%url 'device:customerVlandel' customerVlan.id%}">delete</a></button>
-    <button><a href="{%url 'device:customerVlanupd' customerVlan.id%}">update</a></button>  {% endcomment %}
+    <button><a href="{%url 'device:switchdel' switch.id%}">delete</a></button>
+    <button><a href="{%url 'device:switchupd' switch.id%}">update</a></button>  
 
 {% endfor %}
 {% endblock  %}

@@ -381,44 +381,38 @@ def ConnectionInput(request):
     }
     return render(request, 'admin/connection/addconnection.html', {'dic': dic})
 
-def WorkOrderInd(request, workorder_id):
-    workorder = WorkOrder.objects.filter(id = workorder_id)
+def ConnectionInd(request, connection_id):
+    connection = Connections.objects.filter(id = connection_id)
 
     dic = {
-        'workorder': workorder, 
+        'connection': connection, 
     }
 
-    return render(request, 'admin/WorkOrder/indworkorder.html', {'dic': dic})
+    return render(request, 'admin/connection/indconnection.html', {'dic': dic})
 
-def WorkOrderDel(request,workorder_id):
-    c = WorkOrder.objects.get(pk=workorder_id)
+def ConnectionDel(request,connection_id):
+    c = Connections.objects.get(pk=connection_id)
     c.delete()
-    return redirect('device:workorderlist') 
+    return redirect('device:connectionlist') 
 
-def WorkOrderUpd(request,workorder_id):
-    filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
-    update = WorkOrder.objects.get(pk=workorder_id)
-    form = WorkOrderInp(instance=update)
+def ConnectionUpd(request,connection_id):
+    update = Connections.objects.get(pk=connection_id)
+    form = ConnectionsForm(instance=update)
     if request.method =='POST':
-        form = WorkOrderInp(request.POST, instance=update)
-        email_extra_body = request.POST['option']
-        print(email_extra_body)
-        filte = CustomerVlan.objects.get(id = email_extra_body)
-        print(filte)
+        form = ConnectionsForm(request.POST, instance=update)
+        
         if form.is_valid():
-            form.save(commit=False)
+            
             form.save()
-            WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
-            return redirect('device:workorderlist')
+            
+            return redirect('device:connectionlist')
     
     dic = {
         'id': update,
         'form': form,
-        'filter':filter,
-        
     }
 
-    return render(request, 'admin/WorkOrder/workorderupd.html',{'dic': dic})
+    return render(request, 'admin/connection/updconnection.html',{'dic': dic})
 ######################################### WORKORDER ######################################################
 
 ######################################### WORKORDER ######################################################
@@ -446,44 +440,40 @@ def SwitchInput(request):
     }
     return render(request, 'admin/switch/addswitch.html', {'dic': dic})
 
-def WorkOrderInd(request, workorder_id):
-    workorder = WorkOrder.objects.filter(id = workorder_id)
+def SwitchInd(request, switch_id):
+    switch = Switch.objects.filter(id =switch_id)
 
     dic = {
-        'workorder': workorder, 
+        'switch': switch, 
     }
 
-    return render(request, 'admin/WorkOrder/indworkorder.html', {'dic': dic})
+    return render(request, 'admin/switch/indswitch.html', {'dic': dic})
 
-def WorkOrderDel(request,workorder_id):
-    c = WorkOrder.objects.get(pk=workorder_id)
+def SwitchDel(request,switch_id):
+    c = Switch.objects.get(pk=switch_id)
     c.delete()
-    return redirect('device:workorderlist') 
+    return redirect('device:switchlist') 
 
-def WorkOrderUpd(request,workorder_id):
-    filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
-    update = WorkOrder.objects.get(pk=workorder_id)
-    form = WorkOrderInp(instance=update)
+def SwitchUpd(request,switch_id):
+    
+    update =Switch.objects.get(pk=switch_id)
+    form = SwitchForm(instance=update)
     if request.method =='POST':
-        form = WorkOrderInp(request.POST, instance=update)
-        email_extra_body = request.POST['option']
-        print(email_extra_body)
-        filte = CustomerVlan.objects.get(id = email_extra_body)
-        print(filte)
+        form = SwitchForm(request.POST, instance=update)
         if form.is_valid():
-            form.save(commit=False)
+            
             form.save()
-            WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
-            return redirect('device:workorderlist')
+          
+            return redirect('device:switchlist')
     
     dic = {
         'id': update,
         'form': form,
-        'filter':filter,
+        
         
     }
 
-    return render(request, 'admin/WorkOrder/workorderupd.html',{'dic': dic})
+    return render(request, 'admin/switch/updswitch.html',{'dic': dic})
 ######################################### WORKORDER ######################################################
 
 

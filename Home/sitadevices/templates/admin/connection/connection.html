@@ -5,12 +5,12 @@
 <button> <a href="{%url 'device:connectioninp' %}">add Connection</a></button>
 {% for connection in dic.connection %}
 
-    {% comment %} <a href="{%url 'device:customerVlanind' customerVlan.id%}"> {% endcomment %}
+    <a href="{%url 'device:connectionind' connection.id%}"> 
         <p>{{connection.company}}</p>
-    {% comment %} </a> {% endcomment %}
+    </a> 
 
-    {% comment %} <button><a href="{%url 'device:customerVlandel' customerVlan.id%}">delete</a></button>
-    <button><a href="{%url 'device:customerVlanupd' customerVlan.id%}">update</a></button>  {% endcomment %}
+    <button><a href="{%url 'device:connectiondel' connection.id%}">delete</a></button>
+    <button><a href="{%url 'device:connectionupd' connection.id%}">update</a></button>  
 
 {% endfor %}
 {% endblock  %}
