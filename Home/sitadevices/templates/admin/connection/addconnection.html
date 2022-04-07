@@ -5,7 +5,14 @@
     {%csrf_token%}
     
     {{dic.form}}
-    
+    <select name="option">
+        {% for f in dic.filter %}
+            <option value="{{f.id}}">hellp</option>
+        {% endfor %}
+    </select>
+
+    <input name = "port-amount">
+    <input name = "patchpanel">
     
     <button type="submit" value="submit">submit</button>
 </form>

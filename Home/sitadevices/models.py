@@ -19,6 +19,11 @@ ip = [
         ('DHCP', 'dhcp'),
 ]
 
+status = [
+        ('ACTIVE', 'active'),
+        ('DOWN', 'down'),
+]
+
 class Customer(models.Model):
     company_name = models.CharField(max_length=255)
     contact_person = models.CharField(max_length=255)
@@ -73,3 +78,9 @@ class CommmunicationRoom(models.Model):
 
 class Switch(models.Model):
     comms_room = models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
+
+class DataOutlet(models.Model):
+    connection = models.ForeignKey(Connections, on_delete=models.CASCADE)
+    comroom= models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
+    patch_panel = models.IntegerField()
+    port_status =models.CharField(choices=status, max_length=200)

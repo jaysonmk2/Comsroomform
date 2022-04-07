@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import CustomerInp,CustomerVlanInp,WorkOrderInp,BuildingForm,CommsForm,OfficeForm,ConnectionsForm,SwitchForm
-from .models import Customer,CustomerVlan,WorkOrder,Building,Room,CommmunicationRoom, Connections, Switch
+from .models import Customer,CustomerVlan,WorkOrder,Building,Room,CommmunicationRoom, Connections, Switch, DataOutlet
 from django.shortcuts import redirect, render, get_object_or_404
 # Create your views here.
 
@@ -211,7 +211,7 @@ def WorkOrderUpd(request,workorder_id):
 ######################################### WORKORDER ######################################################
 
 
-######################################### CUSTOMERVLAN ######################################################
+######################################### BUILDING ######################################################
 def Location(request):
     building = Building.objects.all()
     office = Room.objects.all()
@@ -263,10 +263,10 @@ def BuildingUpd(request,building_id):
     }
 
     return render(request, 'admin/location/updbuilding.html',{'dic': dic})
-######################################### CUSTOMERVLAN ######################################################
+######################################### BUILDING ######################################################
 
 
-######################################### CUSTOMERVLAN ######################################################
+######################################### OFFICE ######################################################
 
 def OfficeInput(request):
     if request.method == "POST":
@@ -308,10 +308,10 @@ def OfficeUpd(request,office_id):
     }
 
     return render(request, 'admin/location/updoffice.html',{'dic': dic})
-######################################### CUSTOMERVLAN ######################################################
+######################################### OFFICE ######################################################
 
 
-######################################### CUSTOMERVLAN ######################################################
+######################################### COMROOM ######################################################
 
 def CommsInput(request):
     if request.method == "POST":
@@ -353,10 +353,10 @@ def CommsUpd(request,comms_id):
     }
 
     return render(request, 'admin/location/updcomms.html',{'dic': dic})
-######################################### CUSTOMERVLAN ######################################################
+######################################### COMROOM ######################################################
 
 
-######################################### WORKORDER ######################################################
+######################################### CONNECTION ######################################################
 def Connection(request):
     connection = Connections.objects.all()
     dic = {
@@ -365,10 +365,27 @@ def Connection(request):
     return render(request, 'admin/connection/connection.html', {'dic': dic})
 
 def ConnectionInput(request):
+    filter = CommmunicationRoom.objects.all()
     if request.method == "POST":
         form = ConnectionsForm(request.POST)
-        if form.is_valid():  
-            form.save()
+        com = request.POST['option']
+        port_amount = int(request.POST.get('port-amount'))
+        patchpanel= int(request.POST.get('patchpanel'))
+        print(port_amount)
+        filte = CommmunicationRoom.objects.get(id = com)
+        print(port_amount)
+        if form.is_valid():
+            port_count = 0
+            bigform = form.save() 
+            print(bigform)
+            b = Connections.objects.get(id = bigform.id)
+            print(b.id)
+            for n in range(port_amount):
+                port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=patchpanel,comroom=filte)
+                port.save()
+                port_count = port_count + 1
+            
+            port_count = 0
 
             return redirect('device:connectionlist')
         else:
@@ -377,16 +394,19 @@ def ConnectionInput(request):
         form = ConnectionsForm()
         
     dic = {
-        'form': form, 
+        'form': form,
+        'filter': filter,
     }
     return render(request, 'admin/connection/addconnection.html', {'dic': dic})
 
 def ConnectionInd(request, connection_id):
     connection = Connections.objects.filter(id = connection_id)
-
+    dataoutlets = DataOutlet.objects.filter(connection = connection_id)
     dic = {
         'connection': connection, 
+        'dataoutlets': dataoutlets
     }
+    print(dataoutlets)
 
     return render(request, 'admin/connection/indconnection.html', {'dic': dic})
 
@@ -413,9 +433,9 @@ def ConnectionUpd(request,connection_id):
     }
 
     return render(request, 'admin/connection/updconnection.html',{'dic': dic})
-######################################### WORKORDER ######################################################
+######################################### CONNECTION ######################################################
 
-######################################### WORKORDER ######################################################
+######################################### SWITCH ######################################################
 def Switchs(request):
     switch = Switch.objects.all()
     dic = {
@@ -468,13 +488,11 @@ def SwitchUpd(request,switch_id):
     
     dic = {
         'id': update,
-        'form': form,
-        
-        
+        'form': form, 
     }
 
     return render(request, 'admin/switch/updswitch.html',{'dic': dic})
-######################################### WORKORDER ######################################################
+######################################### SWITCH ######################################################
 
 
 
