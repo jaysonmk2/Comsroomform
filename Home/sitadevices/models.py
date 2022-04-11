@@ -84,3 +84,4 @@ class DataOutlet(models.Model):
     comroom= models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
     patch_panel = models.IntegerField()
     port_status =models.CharField(choices=status, max_length=200)
+    data_number = models.IntegerField(default=1)

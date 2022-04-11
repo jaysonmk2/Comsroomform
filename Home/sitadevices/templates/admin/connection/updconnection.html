@@ -6,6 +6,17 @@
     
     {{dic.form}}
     
+    <input name = "port-amount">
+    <select name="option">
+            <option value="delete">Delete</option>
+            <option value="add">Add</option>
+    </select>
+    <select name="comoption">
+        {% for f in dic.filter %}
+            <option value="{{f.id}}">hellp</option>
+        {% endfor %}
+    </select>
+    
     
     <button type="submit" value="submit">submit</button>
 </form>

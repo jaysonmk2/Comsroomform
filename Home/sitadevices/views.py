@@ -1,3 +1,4 @@
+from django.db import connection
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import CustomerInp,CustomerVlanInp,WorkOrderInp,BuildingForm,CommsForm,OfficeForm,ConnectionsForm,SwitchForm
@@ -375,17 +376,17 @@ def ConnectionInput(request):
         filte = CommmunicationRoom.objects.get(id = com)
         print(port_amount)
         if form.is_valid():
-            port_count = 0
+            port_count = 1
             bigform = form.save() 
             print(bigform)
             b = Connections.objects.get(id = bigform.id)
             print(b.id)
             for n in range(port_amount):
-                port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=patchpanel,comroom=filte)
+                port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=patchpanel,comroom=filte,data_number=port_count)
                 port.save()
                 port_count = port_count + 1
             
-            port_count = 0
+            port_count = 1
 
             return redirect('device:connectionlist')
         else:
@@ -418,18 +419,40 @@ def ConnectionDel(request,connection_id):
 def ConnectionUpd(request,connection_id):
     update = Connections.objects.get(pk=connection_id)
     form = ConnectionsForm(instance=update)
+    dataoutlet = DataOutlet.objects.filter(connection=connection_id)
+    length = len(dataoutlet) 
+    filter = CommmunicationRoom.objects.all()
+    
+
     if request.method =='POST':
+        com = request.POST['comoption']
+        filte = CommmunicationRoom.objects.get(id = com)
         form = ConnectionsForm(request.POST, instance=update)
-        
+        option = request.POST['option']
+        port_amount = int(request.POST.get('port-amount'))
+        # coms= data[1].comroom
         if form.is_valid():
-            
-            form.save()
-            
+            bigform = form.save() 
+            port_count = length + 1
+            b = Connections.objects.get(id = bigform.id)
+            if option == "add":
+                for n in range(port_amount):
+                    port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=0,comroom=filte, data_number=port_count)
+                    port.save()
+                    port_count = port_count + 1
+                
+            else:
+                numb = length-port_amount
+                for n in range(length,numb,-1):
+                    c = dataoutlet.get(data_number = n)
+                    c.delete()
+                
             return redirect('device:connectionlist')
     
     dic = {
         'id': update,
         'form': form,
+        'filter': filter,
     }
 
     return render(request, 'admin/connection/updconnection.html',{'dic': dic})
