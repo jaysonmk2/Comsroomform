@@ -45,6 +45,7 @@ urlpatterns =[
     path('connection/<int:connection_id>', ConnectionInd, name='connectionind'),
     path('del/connection/<int:connection_id>', ConnectionDel, name='connectiondel'),
     path('upd/connection/<int:connection_id>', ConnectionUpd, name='connectionupd'),
+    path('upd/dataoutlet/<int:data_id>', OutletUpd, name='outletupd'),
 
     path('switch', Switchs, name="switchlist"),
     path('switchinp', SwitchInput, name='switchinp'),

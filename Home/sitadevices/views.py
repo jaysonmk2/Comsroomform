@@ -1,7 +1,7 @@
 from django.db import connection
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .forms import CustomerInp,CustomerVlanInp,WorkOrderInp,BuildingForm,CommsForm,OfficeForm,ConnectionsForm,SwitchForm
+from .forms import CustomerInp,CustomerVlanInp,WorkOrderInp,BuildingForm,CommsForm,OfficeForm,ConnectionsForm,SwitchForm, DataOutletForm
 from .models import Customer,CustomerVlan,WorkOrder,Building,Room,CommmunicationRoom, Connections, Switch, DataOutlet
 from django.shortcuts import redirect, render, get_object_or_404
 # Create your views here.
@@ -517,7 +517,24 @@ def SwitchUpd(request,switch_id):
     return render(request, 'admin/switch/updswitch.html',{'dic': dic})
 ######################################### SWITCH ######################################################
 
+def OutletUpd(request,data_id):
+    
+    update =DataOutlet.objects.get(pk=data_id)
+    form = DataOutletForm(instance=update)
+    if request.method =='POST':
+        form = DataOutletForm(request.POST, instance=update)
+        if form.is_valid():
+            
+            form.save()
+          
+            return redirect('device:connectionlist')
+    
+    dic = {
+        'id': update,
+        'form': form, 
+    }
 
+    return render(request, 'admin/connection/outletupd.html',{'dic': dic})
 
 #  def SwitchForm(request):
 #     if request.method == "POST":
