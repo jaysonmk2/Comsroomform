@@ -1,0 +1,48 @@
+h1,h2,h3,p,a{
+    margin:0;
+    padding:0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns: 80% 20% ;
+    border-radius: 1rem;
+    border: 0.5px solid rgb(226, 226, 226);
+    background-color: rgb(238, 238, 238);
+    margin-top: 1em;
+    transition: 0.5s;
+}
+.grid:hover{
+    background-color: rgb(212, 212, 212);
+    color:black;
+    text-decoration: none;
+}
+.flex{
+    display:flex;
+    flex-direction: row;
+    margin:1rem 1rem;
+    
+}
+.delupd{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.del{
+    padding-top: 15px;
+    color:red;  
+}
+.upd{
+    padding-top: 15px;
+    color: rgb(0, 219, 0);
+}
+
+
+

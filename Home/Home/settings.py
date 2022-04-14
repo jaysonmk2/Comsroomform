@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'FormPage',
     'users',
     'sitadevices',
+    
     # 'storages',
 ]
 
