@@ -2,15 +2,20 @@
 
 {% block content %}
 
-<button> <a href="{%url 'device:switchinp' %}">add switch</a></button>
+<div class="container">
+    <a href="{%url 'device:switchinp' %}"><button type="button" class="btn btn-primary mt-3">  Add Switch</button></a>
 {% for switch in dic.switch %}
-
-    <a href="{%url 'device:switchind' switch.id%}"> 
-        <p>{{switch.comms_room}}</p>
-    </a> 
-
-    <button><a href="{%url 'device:switchdel' switch.id%}">delete</a></button>
-    <button><a href="{%url 'device:switchupd' switch.id%}">update</a></button>  
-
+<div class="grid">
+    <a href="{%url 'device:switchind' switch.id%}">
+        <div class="flex">
+            <p>{{switch.comms_room}}</p>
+        </div>
+    </a>
+    <div class="delupd">
+        <a class="upd"href="{%url 'device:switchupd' switch.id%}"><span class="material-icons md-36">update</span></a>
+        <a class="del" href="{%url 'device:switchdel' switch.id%}"><span class="material-icons md-36">delete</span></a>
+    </div>
+</div>
 {% endfor %}
+</div>
 {% endblock  %}

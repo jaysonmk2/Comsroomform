@@ -2,14 +2,23 @@
 
 {% block content %}
 
-<button> <a href="{%url 'device:customerVlaninp' %}">add customerVlan</a></button>
+<div class="container">
+    <a href="{%url 'device:customerVlaninp' %}"><button type="button" class="btn btn-primary mt-3"> add customerVlan</button></a>
 {% for customerVlan in dic.customerVlan %}
 
-    <a href="{%url 'device:customerVlanind' customerVlan.id%}">
-        <p>{{customerVlan.vlan_number}}</p>
-    </a>
 
-    <button><a href="{%url 'device:customerVlandel' customerVlan.id%}">delete</a></button>
-    <button><a href="{%url 'device:customerVlanupd' customerVlan.id%}">update</a></button> 
+    <div class="grid">
+        <a href="{%url 'device:customerVlanind' customerVlan.id%}">
+            <div class="flex">
+                <p>{{customerVlan.vlan_number}}</p>
+            </div>
+        </a>
+        <div class="delupd">
+            <a class="upd"href="{%url 'device:customerVlanupd' customerVlan.id%}"><span class="material-icons md-36">update</span></a>
+            <a class="del" href="{%url 'device:customerVlandel' customerVlan.id%}"><span class="material-icons md-36">delete</span></a>
+        </div>
+    </div>
+
 {% endfor %}
+</div>
 {% endblock  %}

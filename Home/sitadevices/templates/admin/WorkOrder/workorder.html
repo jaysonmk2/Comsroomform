@@ -2,16 +2,23 @@
 
 {% block content %}
 
-<button> <a href="{%url 'device:workorderinp' %}">add Workorder</a></button>
+
+<div class="container">
+    <a href="{%url 'device:workorderinp' %}"><button type="button" class="btn btn-primary mt-3">  Add Work Order</button></a>
 {% for workorder in dic.workorder %}
-
-    <a href="{%url 'device:workorderind' workorder.id%}">
-        <p>{{workorder.id}}</p>
-        <p>{{workorder.company_id}}</p>
-        <p>{{workorder.vlan_number}}</p>
-    </a>
-
-    <button><a href="{%url 'device:workorderdel' workorder.id%}">delete</a></button>
-    <button><a href="{%url 'device:workorderupd' workorder.id%}">update</a></button>  
+    <div class="grid">
+        <a href="{%url 'device:workorderind' workorder.id%}">
+            <div class="flex">
+                <p>{{workorder.id}}</p>
+            <p>{{workorder.company_id}}</p>
+            <p>{{workorder.vlan_number}}</p>
+            </div>
+        </a>
+        <div class="delupd">
+            <a class="upd" href="{%url 'device:workorderupd' workorder.id%}"><span class="material-icons md-36">update</span></a>
+            <a class="del" href="{%url 'device:workorderdel' workorder.id%}"><span class="material-icons md-36">delete</span></a>
+        </div>
+    </div>
 {% endfor %}
+</div>
 {% endblock  %}
