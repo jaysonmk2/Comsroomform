@@ -60,7 +60,7 @@ def CustomerUpd(request,customer_id):
         
         if form.is_valid():
             form.save()
-            return redirect('device:customerlist')
+            return redirect('device:customerind', customer_id)
     
     dic = {
         'id': update,

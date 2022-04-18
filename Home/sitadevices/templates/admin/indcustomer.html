@@ -2,8 +2,20 @@
 
 {% block content %}
 {% for c in dic.customer %}
-    {{c.phone}}
-    {{c.email}}
+
+    <div class="container">
+        <a href="{%url 'device:customerupd' c.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
+        <div class="row">
+            <div class="col-sm-6">
+                {{c.phone}}
+            </div>
+            <div class="col-sm-6">
+                {{c.email}}
+            </div>
+        </div>
+    </div>
+    
+    
 {% endfor %}
 
 

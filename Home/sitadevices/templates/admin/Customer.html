@@ -9,7 +9,10 @@
     <div class="grid">
         <a href="{%url 'device:customerind' customer.id%}">
             <div class="flex">
-                <p>{{customer.phone}}</p>
+                <div>
+                    <h4 class="list-title">Phone</h4>
+                    <p>{{customer.phone}}</p>
+                </div>
             </div>
         </a>
         <div class="delupd">
