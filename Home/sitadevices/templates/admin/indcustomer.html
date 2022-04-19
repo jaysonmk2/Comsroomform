@@ -5,12 +5,50 @@
 
     <div class="container">
         <a href="{%url 'device:customerupd' c.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
+        <h1 class="title top">Customer info</h1>
+        <div class="line-top"></div>
         <div class="row">
-            <div class="col-sm-6">
-                {{c.phone}}
-            </div>
-            <div class="col-sm-6">
-                {{c.email}}
+            <div class="col-sm-12 ">
+
+                <div class="text-area">
+                    <div class="line"></div>
+                    <div class="space-between">
+                        <h3 class="title">Company name</h3>
+                        <p class="text">{{c.company_name}}</p>
+                    </div>
+                </div>
+
+                <div class="text-area">
+                    <div class="line"></div>
+                    <div class="space-between">
+                        <h3 class="title">Contact Person</h3>
+                        <p class="text">{{c.contact_person}}</p>
+                    </div>
+                </div>
+
+                <div class="text-area">
+                    <div class="line"></div>
+                    <div class="space-between">
+                        <h3 class="title">Email</h3>
+                        <p class="text">{{c.email}}</p>
+                    </div>
+                </div>
+
+                <div class="text-area">
+                    <div class="line"></div>
+                    <div class="space-between">
+                        <h3 class="title">Phone number</h3>
+                        <p class="text">{{c.phone}}</p>
+                    </div>
+                </div>
+
+                <div class="text-area">
+                    <div class="line"></div>
+                    <div class="space-between">
+                        <h3 class="title">Status</h3>
+                        <p class="text">{{c.active}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
