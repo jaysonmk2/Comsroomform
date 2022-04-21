@@ -9,11 +9,20 @@
     <div class="grid">
         <a href="{%url 'device:customerind' customer.id%}">
             <div class="flex">
-                <div>
+                <div class="margin-right">
                     <h4 class="list-title">Phone</h4>
                     <p>{{customer.phone}}</p>
                 </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Company Name</h4>
+                    <p>{{customer.company_name}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Contact Person</h4>
+                    <p>{{customer.contact_person}}</p>
+                </div>
             </div>
+           
         </a>
         <div class="delupd">
             <a class="upd"href="{%url 'device:customerupd' customer.id%}"><span class="material-icons md-36">update</span></a>

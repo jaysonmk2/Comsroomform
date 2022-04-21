@@ -2,9 +2,130 @@
 
 {% block content %}
 {% for vlan in dic.customerVlan %}
-yo
-    {{vlan.vlan_number}}
-    {{vlan.usage}}
+<div class="container">
+    <a href="{%url 'device:customerVlanupd' vlan.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
+    <h1 class="title top">Customer info</h1>
+    <div class="line-top"></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Vlan Number</h3>
+                    <p class="text">{{vlan.vlan_number}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Customer</h3>
+                    <p class="text">{{vlan.custumor}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Usage</h3>
+                    <p class="text">{{vlan.usage}}</p>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Config Date</h3>
+                    <p class="text">{{vlan.config_date}}</p>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Disconnection Date</h3>
+                    <p class="text">{{vlan.disconnection_date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">DHCP ip range</h3>
+                    <p class="text">{{vlan.dhcp_ip_range}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Lan ip range</h3>
+                    <p class="text">{{vlan.lan_ip_range}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Lan Subnet Mask</h3>
+                    <p class="text">{{vlan.lan_subnet_mask}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Wan public ip</h3>
+                    <p class="text">{{vlan.wan_public_ip}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Wan Subnet Mask</h3>
+                    <p class="text">{{vlan.wan_subnet_mask}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Bandwidth</h3>
+                    <p class="text">{{vlan.bandwidth}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area ">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Vlan Description</h3>
+                    <p class="textarea text">{{vlan.vlan_description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12 ">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Additional Configurations</h3>
+                    <p class="textarea text">{{vlan.additional_config}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Remark</h3>
+                    <p class="textarea text">{{vlan.remark}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
 {% endfor %}
 
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import DateField
 from django.utils import timezone
 
 # Create your models here.
@@ -21,7 +22,25 @@ ip = [
 
 status = [
         ('ACTIVE', 'active'),
-        ('DOWN', 'down'),
+        ('DISABLED', 'disabled'),
+]
+
+requestType = [
+        ('CONFIGURE', 'configure'),
+        ('MODIFY', 'modify'),
+        ('DISCONNECT', 'disconnect'),
+        ('RESET','reset')
+]
+workOrderStatus = [
+        ('CONFIGURE', 'configure'),
+        ('MODIFY', 'modify'),
+        ('DISCONNECT', 'disconnect'),
+        ('RESET','reset')
+]
+duplex = [
+        ('HALF', 'half'),
+        ('FULL', 'full'),
+        ('AUTO', 'auto'),  
 ]
 
 class Customer(models.Model):
@@ -53,16 +72,36 @@ class CustomerVlan(models.Model):
 
 
 class WorkOrder(models.Model):
-        company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-        vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
-        submitted_date_time = models.DateTimeField(default=timezone.now)
+    work_order_date = models.DateTimeField(default=timezone.now)
+    request_date = models.DateField(default=timezone.now)
+    service_desk_ticket_number = models.CharField(max_length=200,default="none")
+    request_type = models.CharField(choices=requestType, max_length=200,default="none")
+    request_description = models.TextField(default="none")
+    configuration_remark = models.TextField(default="none")
+    comment = models.TextField(default="none")
+    engineer_assigned = models.CharField(max_length=200,default="none")
+    company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
+    submitted_date_time = models.DateTimeField(default=timezone.now)
 
 
 
 class Connections(models.Model):
     company = models.ForeignKey(Customer, on_delete=models.CASCADE)
     customerVlan = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
-
+    switch_port_number = models.IntegerField(default=0)
+    duplex = models.CharField(choices=duplex, max_length=200,default="none")
+    voice_vlan_number = models.IntegerField(default=0)
+    phone_mac_address = models.CharField(max_length=200,default="none")
+    phone_extension = models.CharField(max_length=200,default="none")
+    purpose = models.TextField(default="none")
+    sticky_port = models.CharField(choices=yesno, max_length=200,default="none")
+    additional_configuration = models.TextField(default="none")
+    remark = models.TextField(default="none")
+    actual_user = models.CharField(max_length=200,default="none")
+    status = models.CharField(choices= status, max_length=200,default="none")
+    connection_date = models.DateField(default=timezone.now)
+    disconnection_date = models.DateField(default=timezone.now)
 
 class Building(models.Model):
     building_desc = models.TextField()
@@ -78,6 +117,17 @@ class CommmunicationRoom(models.Model):
 
 class Switch(models.Model):
     comms_room = models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
+    switch_name = models.CharField(max_length=200,default="none")
+    model = models.CharField(max_length=200,default="none")
+    brand = models.CharField(max_length=200,default="none")
+    port_capacity = models.CharField(max_length=200,default="none")
+    owner = models.CharField(max_length=200,default="none")
+    supplier = models.CharField(max_length=200,default="none")
+    brand = models.CharField(max_length=200,default="none")
+    poe_enabled = models.CharField(choices=yesno, max_length=200,default="none")
+    rach_number = models.CharField(max_length=200,default="none")
+    purchase_date = models.DateField(default=timezone.now)
+    status = models.CharField(choices=status, max_length=200,default="none")
 
 class DataOutlet(models.Model):
     connection = models.ForeignKey(Connections, on_delete=models.CASCADE)

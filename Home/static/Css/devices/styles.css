@@ -70,16 +70,26 @@ a{
     margin:1rem 0;
     display: flex;
 }
-
-.top{
-    margin-top: 2rem;
+.textfield{
+    margin-top:0.5rem;
+    padding:1rem;
 }
+
 .title{
     font-weight: bold;
+    font-size: 1.3rem;
 }
-
+.top{
+    margin-top: 2rem;
+    font-size: 2.5rem;
+}
 .text{
-    font-size: 1.5rem ;
+    font-size: 1.3rem;
+     
+}
+.textarea {
+    width:70%;
+    overflow-wrap: break-word;
 }
 .line{
     width:5px;
@@ -88,4 +98,11 @@ a{
 .space-between{
     margin-left:2rem
 }
+.text-long-title{
+    font-size:1.8rem;
+    font-weight: bold;
+}
 
+.margin-right{
+    margin-right: 2rem;
+}

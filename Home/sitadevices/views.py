@@ -80,7 +80,7 @@ def CustomerVlans(request):
     dic = {
         'customerVlan': customerVlan, 
     }
-    return render(request, 'admin/customerVlan/CustomerVlan.html', {'dic': dic})
+    return render(request, 'admin/customervlan/customerVlan.html', {'dic': dic})
 
 def CustomerVlanInput(request):
     if request.method == "POST":
@@ -122,7 +122,7 @@ def CustomerVlanUpd(request,customerVlan_id):
         
         if form.is_valid():
             form.save()
-            return redirect('device:customerVlanlist')
+            return redirect('device:customerVlanind', customerVlan_id)
     
     dic = {
         'id': update,
