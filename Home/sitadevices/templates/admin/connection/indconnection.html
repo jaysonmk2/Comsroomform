@@ -1,20 +1,48 @@
 {% extends 'admin/base1.html' %}
 
 {% block content %}
+
 {% for connection in dic.connection %}
+<div class="container">
+    <a href="{%url 'device:connectionupd' connection.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
+    <h1 class="title top">Connection Info</h1>
+    <div class="line-top"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row i">
+                {% for data in dic.dataoutlets %}
+                    <div class="col-sm-6">
+                        <a href="{%url 'device:outletupd' data.id%}">
+                            <div class="flex">
+                                {{data.port_status}}
+                                {{data.comroom}}
+                                {{data.patch_panel}}
+                                {{data.data_number}}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    
 
-    {{connection.company}}
-    {{connection.customerVlan}}
+        <div class="col-md-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Vlan Number</h3>
+                    <p class="text">{{connection.company}}</p>
+                </div>
+            </div>
+            {{connection.customerVlan}}
+        </div>
+    </div>
+</div>
+
+
+
+
 {% endfor %}
-hello
-
-{% for data in dic.dataoutlets %}
-<a href="{%url 'device:outletupd' data.id%}">
-    {{data.port_status}}
-    {{data.comroom}}
-</a>
-{% endfor %}
-
 
 
 {% endblock  %}

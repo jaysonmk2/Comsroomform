@@ -199,7 +199,7 @@ def WorkOrderUpd(request,workorder_id):
             form.save(commit=False)
             form.save()
             WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
-            return redirect('device:workorderlist')
+            return redirect('device:workorderind', workorder_id)
     
     dic = {
         'id': update,

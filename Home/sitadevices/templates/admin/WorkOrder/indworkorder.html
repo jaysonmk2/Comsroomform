@@ -2,6 +2,101 @@
 
 {% block content %}
 {% for workorder in dic.workorder %}
+<div class="container">
+    <a href="{%url 'device:workorderupd' workorder.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
+    <h1 class="title top">WorkOrder Info</h1>
+    <div class="line-top"></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Service Desk Ticket</h3>
+                    <p class="text">{{workorder.service_desk_ticket_number}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Request Type</h3>
+                    <p class="text">{{workorder.request_type}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Engineer Assigned</h3>
+                    <p class="text">{{workorder.engineer_assigned}}</p>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Company</h3>
+                    <p class="text">{{workorder.company_id}}</p>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Vlan Number</h3>
+                    <p class="text">{{workorder.vlan_number}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">WorkOrder Date</h3>
+                    <p class="text">{{workorder.work_order_date}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Request Date</h3>
+                    <p class="text">{{workorder.request_date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area ">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Request Description</h3>
+                    <p class="textarea text">{{workorder.request_description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12 ">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Configuration Remark</h3>
+                    <p class="textarea text">{{workorder.configuration_remark}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Comment</h3>
+                    <p class="textarea text">{{workorder.comment}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     {{workorder.company_id}}
     {{workorder.vlan_number}}

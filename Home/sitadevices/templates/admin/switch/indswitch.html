@@ -2,8 +2,90 @@
 
 {% block content %}
 {% for switch in dic.switch %}
+<div class="container">
+    <a href="{%url 'device:switchupd' switch.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
+    <h1 class="title top">Switch info</h1>
+    <div class="line-top"></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">SWitch Name</h3>
+                    <p class="text">{{switch.switch_name}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Model</h3>
+                    <p class="text">{{switch.model}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Brand</h3>
+                    <p class="text">{{switch.brand}}</p>
+                </div>
+            </div>
 
-    {{switch.comms_room}}
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Port Capacity</h3>
+                    <p class="text">{{switch.port_capacity}}</p>
+                    
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Owner</h3>
+                    <p class="text">{{switch.owner}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Supplier</h3>
+                    <p class="text">{{switch.supplier}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">POE enabled</h3>
+                    <p class="text">{{switch.poe_enabled}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Rach Number</h3>
+                    <p class="text">{{switch.rach_number}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Purchase Date</h3>
+                    <p class="text">{{switch.purchase_date}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Status</h3>
+                    <p class="text">{{switch.status}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
 {% endfor %}
 
 
