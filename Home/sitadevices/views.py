@@ -372,15 +372,15 @@ def ConnectionInput(request):
         com = request.POST['option']
         port_amount = int(request.POST.get('port-amount'))
         patchpanel= int(request.POST.get('patchpanel'))
-        print(port_amount)
+        
         filte = CommmunicationRoom.objects.get(id = com)
-        print(port_amount)
+        
         if form.is_valid():
             port_count = 1
             bigform = form.save() 
-            print(bigform)
+            
             b = Connections.objects.get(id = bigform.id)
-            print(b.id)
+            
             for n in range(port_amount):
                 port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=patchpanel,comroom=filte,data_number=port_count)
                 port.save()
@@ -447,7 +447,7 @@ def ConnectionUpd(request,connection_id):
                     c = dataoutlet.get(data_number = n)
                     c.delete()
                 
-            return redirect('device:connectionlist')
+            return redirect('device:connectionind', connection_id)
     
     dic = {
         'id': update,
@@ -519,15 +519,16 @@ def SwitchUpd(request,switch_id):
 
 def OutletUpd(request,data_id):
     
+    
     update =DataOutlet.objects.get(pk=data_id)
+    con =update.connection.id
     form = DataOutletForm(instance=update)
+    print(con)
     if request.method =='POST':
         form = DataOutletForm(request.POST, instance=update)
         if form.is_valid():
-            
             form.save()
-          
-            return redirect('device:connectionlist')
+            return redirect('device:connectionind',con)
     
     dic = {
         'id': update,

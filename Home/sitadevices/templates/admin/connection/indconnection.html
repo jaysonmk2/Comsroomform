@@ -30,11 +30,133 @@
             <div class="text-area">
                 <div class="line"></div>
                 <div class="space-between">
-                    <h3 class="title">Vlan Number</h3>
+                    <h3 class="title">Status</h3>
+                    <p class="text">{{connection.status}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Connection Company</h3>
                     <p class="text">{{connection.company}}</p>
                 </div>
             </div>
-            {{connection.customerVlan}}
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Customer Vlan</h3>
+                    <p class="text">{{connection.customerVlan}}</p>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Switch Port Number</h3>
+                    <p class="text">{{connection.switch_port_number}}</p>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Actual User</h3>
+                    <p class="text">{{connection.actual_user}}</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Duplex</h3>
+                    <p class="text">{{connection.duplex}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Voice Vlan Number</h3>
+                    <p class="text">{{connection.voice_vlan_number}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Phone Mac Address</h3>
+                    <p class="text">{{connection.phone_mac_address}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Phone Extension</h3>
+                    <p class="text">{{connection.phone_extension}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Sticky Port</h3>
+                    <p class="text">{{connection.sticky_port}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Connection Date</h3>
+                    <p class="text">{{connection.connection_date}}</p>
+                </div>
+            </div>
+            <div class="text-area">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="title">Disconnection Date</h3>
+                    <p class="text">{{connection.disconnection_date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area ">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Purpose</h3>
+                    <p class="textarea text">{{connection.purpose}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area ">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Additional Configurations<h3>
+                    <p class="textarea text">{{connection.additional_configuration}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row textfield">
+        <div class="col-sm-12">
+            <div class="text-area ">
+                <div class="line"></div>
+                <div class="space-between">
+                    <h3 class="text-long-title">Remark</h3>
+                    <p class="textarea text">{{connection.remark}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

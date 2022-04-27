@@ -64,6 +64,7 @@ a{
 .row{
     background-color:rgb(214, 214, 255);
     padding: 2rem 0;
+    margin-top:1rem;
     border-radius: 2rem;
 }
 .i{
