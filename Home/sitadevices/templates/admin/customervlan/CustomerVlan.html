@@ -10,7 +10,19 @@
     <div class="grid">
         <a href="{%url 'device:customerVlanind' customerVlan.id%}">
             <div class="flex">
-                <p>{{customerVlan.vlan_number}}</p>
+                <div class="margin-right">
+                    {% comment %} horrible spelling watch out here and everywhere customer is written {% endcomment %}
+                    <h4 class="list-title">Customer</h4>
+                    <p>{{customerVlan.custumor}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Customer Vlan</h4>
+                    <p>{{customerVlan.vlan_number}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Config Date</h4>
+                    <p>{{customerVlan.config_date}}</p>
+                </div>
             </div>
         </a>
         <div class="delupd">

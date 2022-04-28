@@ -3,6 +3,7 @@
 {% block content %}
 {% for workorder in dic.workorder %}
 <div class="container">
+    <a href="{%url 'device:workorderlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
     <a href="{%url 'device:workorderupd' workorder.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
     <h1 class="title top">WorkOrder Info</h1>
     <div class="line-top"></div>

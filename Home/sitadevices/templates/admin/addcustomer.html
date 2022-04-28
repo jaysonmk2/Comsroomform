@@ -3,10 +3,12 @@
 {% block content %}
 <form enctype="multipart/form-data" action="{%url 'device:customerinp'%}"  class="" method="POST">
     {%csrf_token%}
+    <div class= "container">
+        <a href="{%url 'device:customerlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
+        {{dic.form}}
+        <button type="submit" value="submit">submit</button>
+    </div>
     
-    {{dic.form}}
     
-    
-    <button type="submit" value="submit">submit</button>
 </form>
 {% endblock  %}

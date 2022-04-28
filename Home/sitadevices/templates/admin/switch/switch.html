@@ -8,7 +8,22 @@
 <div class="grid">
     <a href="{%url 'device:switchind' switch.id%}">
         <div class="flex">
-            <p>{{switch.comms_room}}</p>
+                <div class="margin-right">
+                    <h4 class="list-title">Switch Name</h4>
+                    <p>{{switch.switch_name}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Communication Room</h4>
+                    <p>{{switch.comms_room}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Port Capacity</h4>
+                    <p>{{switch.port_capacity}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">POE Enabled</h4>
+                    <p>{{switch.poe_enabled}}</p>
+                </div>
         </div>
     </a>
     <div class="delupd">

@@ -10,9 +10,18 @@
     <div class="grid">
         <a href="{%url 'device:workorderind' workorder.id%}">
             <div class="flex">
-                <p>{{workorder.id}}</p>
-            <p>{{workorder.company_id}}</p>
-            <p>{{workorder.vlan_number}}</p>
+                <div class="margin-right">
+                    <h4 class="list-title">Request Type</h4>
+                    <p>{{workorder.request_type}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Service Desk Ticket Number</h4>
+                    <p>{{workorder.service_desk_ticket_number}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Engineer Assigned</h4>
+                    <p>{{workorder.engineer_assigned}}</p>
+                </div>
             </div>
         </a>
         <div class="delupd">

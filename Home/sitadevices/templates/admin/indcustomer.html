@@ -4,6 +4,7 @@
 {% for c in dic.customer %}
 
     <div class="container">
+        <a href="{%url 'device:customerlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
         <a href="{%url 'device:customerupd' c.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
         <h1 class="title top">Customer info</h1>
         <div class="line-top"></div>

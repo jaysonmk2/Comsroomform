@@ -4,6 +4,7 @@
 
 {% for connection in dic.connection %}
 <div class="container">
+    <a href="{%url 'device:connectionlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
     <a href="{%url 'device:connectionupd' connection.id%}"><button type="button" class="btn btn-primary mt-3">Edit</button></a>
     <h1 class="title top">Connection Info</h1>
     <div class="line-top"></div>
@@ -13,11 +14,16 @@
                 {% for data in dic.dataoutlets %}
                     <div class="col-sm-6">
                         <a href="{%url 'device:outletupd' data.id%}">
-                            <div class="flex">
-                                {{data.port_status}}
-                                {{data.comroom}}
-                                {{data.patch_panel}}
-                                {{data.data_number}}
+                            <div class="flexdown">
+                                {% if data.port_status == "ACTIVE" %}
+                                    <p class="first alert alert-info">Status: <b>{{data.port_status}}</b></p>
+                                {% else %}
+                                    <p class="first alert alert-danger">Status: <b>{{data.port_status}}</b></p>
+                                {% endif %}
+                               
+                                <p class="second">Room: <b>{{data.comroom}}</b></p>
+                                <p class="third">Patch Panel: <b>{{data.patch_panel}}</b></p>
+                                <p class="fourth">Port Number: <b>{{data.data_number}}</b></p>
                             </div>
                         </a>
                     </div>

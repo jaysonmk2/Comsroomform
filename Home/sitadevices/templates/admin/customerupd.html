@@ -4,9 +4,13 @@
 <form enctype="multipart/form-data" action="{%url 'device:customerupd' dic.id.id%}"  class="" method="POST">
     {%csrf_token%}
     
-    {{dic.form}}
+    <div class="container">
+        {{dic.form}}
+        <button type="submit" value="submit">submit</button>
+    </div>
     
     
-    <button type="submit" value="submit">submit</button>
+    
+    
 </form>
 {% endblock  %}

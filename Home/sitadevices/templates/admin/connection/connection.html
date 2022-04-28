@@ -8,7 +8,22 @@
 <div class="grid">
     <a href="{%url 'device:connectionind' connection.id%}">
         <div class="flex">
-            <p>{{connection.company}}</p>
+            <div class="margin-right">
+                <h4 class="list-title">Company</h4>
+                <p>{{connection.company}}</p>
+            </div>
+            <div class="margin-right">
+                <h4 class="list-title">Customer Vlan</h4>
+                <p>{{connection.customerVlan}}</p>
+            </div>
+            <div class="margin-right">
+                <h4 class="list-title">Duplex</h4>
+                <p>{{connection.duplex}}</p>
+            </div>
+            <div class="margin-right">
+                <h4 class="list-title">Status</h4>
+                <p>{{connection.status}}</p>
+            </div>
         </div>
     </a>
     <div class="delupd">
