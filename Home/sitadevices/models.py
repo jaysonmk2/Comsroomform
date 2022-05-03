@@ -53,7 +53,7 @@ class Customer(models.Model):
 
 
 class CustomerVlan(models.Model):
-    custumor = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customor = models.ForeignKey(Customer, on_delete=models.CASCADE)
     vlan_number = models.IntegerField()
     usage = models.CharField(choices=usages, max_length=200)
     config_date = models.DateTimeField()
@@ -71,18 +71,7 @@ class CustomerVlan(models.Model):
     submitted_date_time = models.DateTimeField(default=timezone.now)
 
 
-class WorkOrder(models.Model):
-    work_order_date = models.DateTimeField(default=timezone.now)
-    request_date = models.DateField(default=timezone.now)
-    service_desk_ticket_number = models.CharField(max_length=200,default="none")
-    request_type = models.CharField(choices=requestType, max_length=200,default="none")
-    request_description = models.TextField(default="none")
-    configuration_remark = models.TextField(default="none")
-    comment = models.TextField(default="none")
-    engineer_assigned = models.CharField(max_length=200,default="none")
-    company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
-    submitted_date_time = models.DateTimeField(default=timezone.now)
+
 
 
 
@@ -103,6 +92,20 @@ class Connections(models.Model):
     connection_date = models.DateField(default=timezone.now)
     disconnection_date = models.DateField(default=timezone.now)
 
+class WorkOrder(models.Model):
+    work_order_date = models.DateTimeField(default=timezone.now)
+    request_date = models.DateField(default=timezone.now)
+    connections= models.ForeignKey(Connections, on_delete=models.CASCADE, blank=True, null=True)
+    service_desk_ticket_number = models.CharField(max_length=200,default="none")
+    request_type = models.CharField(choices=requestType, max_length=200,default="none")
+    request_description = models.TextField(default="none")
+    configuration_remark = models.TextField(default="none")
+    comment = models.TextField(default="none")
+    engineer_assigned = models.CharField(max_length=200,default="none")
+    company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
+    submitted_date_time = models.DateTimeField(default=timezone.now)
+
 class Building(models.Model):
     building_desc = models.TextField()
 
@@ -116,7 +119,7 @@ class CommmunicationRoom(models.Model):
 
 
 class Switch(models.Model):
-    comms_room = models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
+    communication_room = models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
     switch_name = models.CharField(max_length=200,default="none")
     model = models.CharField(max_length=200,default="none")
     brand = models.CharField(max_length=200,default="none")
@@ -124,7 +127,7 @@ class Switch(models.Model):
     owner = models.CharField(max_length=200,default="none")
     supplier = models.CharField(max_length=200,default="none") 
     poe_enabled = models.CharField(choices=yesno, max_length=200,default="none")
-    rach_number = models.CharField(max_length=200,default="none")
+    rack_number = models.CharField(max_length=200,default="none")
     purchase_date = models.DateField(default=timezone.now)
     status = models.CharField(choices=status, max_length=200,default="none")
 

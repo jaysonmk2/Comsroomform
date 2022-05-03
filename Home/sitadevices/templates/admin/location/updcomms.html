@@ -1,12 +1,14 @@
 {% extends 'admin/base1.html' %}
-
+{% load crispy_forms_filters %}
 {% block content %}
 <form enctype="multipart/form-data" action="{%url 'device:commsupd' dic.id.id%}"  class="" method="POST">
     {%csrf_token%}
     
-    {{dic.form}}
-    
-    
-    <button type="submit" value="submit">submit</button>
+    <div class="container">
+        {{dic.form|crispy}}
+        
+        
+        <button type="submit" class="btn btn-primary submit" value="submit">submit</button>
+    </div>
 </form>
 {% endblock  %}

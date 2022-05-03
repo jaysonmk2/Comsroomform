@@ -1,12 +1,15 @@
 {% extends '../base1.html' %}
-
+{% load crispy_forms_filters %}
 {% block content %}
 <form enctype="multipart/form-data" action="{%url 'device:officeinp'%}"  class="" method="POST">
     {%csrf_token%}
     
-    {{dic.form}}
-    
-    
-    <button type="submit" value="submit">submit</button>
+    <div class="container">
+        <a href="{%url 'device:locationlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
+        {{dic.form|crispy}}
+        
+        
+        <button type="submit" class="btn btn-primary submit" value="submit">submit</button>
+    </div>
 </form>
 {% endblock  %}

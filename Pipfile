@@ -10,6 +10,7 @@ boto3 = "*"
 django-storages = "*"
 gunicorn = "*"
 django-heroku = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

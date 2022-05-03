@@ -2,9 +2,21 @@ h1,h2,h3,h4,p,a{
     margin:0;
     padding:0;
 }
+
+label{
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: .5rem;
+}
 a{
     text-decoration: none;
     color: black;
+}
+.submit{
+    margin-top: 1rem;
+}
+.location-titles{
+    margin-top:1rem;
 }
 
 .grid{
@@ -121,4 +133,8 @@ a{
 .first{
     font-weight: bold;
     margin-bottom: 0;
+}
+
+.hide{
+    display:none;
 }

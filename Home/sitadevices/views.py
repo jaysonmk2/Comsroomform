@@ -370,10 +370,12 @@ def ConnectionInput(request):
     if request.method == "POST":
         form = ConnectionsForm(request.POST)
         com = request.POST['option']
+        
         port_amount = int(request.POST.get('port-amount'))
         patchpanel= int(request.POST.get('patchpanel'))
         
         filte = CommmunicationRoom.objects.get(id = com)
+        
         
         if form.is_valid():
             port_count = 1

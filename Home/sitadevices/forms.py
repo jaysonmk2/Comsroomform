@@ -26,6 +26,11 @@ class WorkOrderInp(forms.ModelForm):
         fields='__all__'
         exclude = ['submitted_date_time','vlan_number']
 
+        widgets = {
+            'work_order_date':forms.DateInput(attrs={'type': 'date'}),
+            'request_date':forms.DateInput(attrs={'type': 'date'}),
+        }
+
 
 class BuildingForm(forms.ModelForm):
     class Meta:
@@ -47,10 +52,18 @@ class ConnectionsForm(forms.ModelForm):
         model=  Connections
         fields='__all__'
 
+        widgets = {
+            'disconnection_date':forms.DateInput(attrs={'type': 'date'}),
+        }
+
 class SwitchForm(forms.ModelForm):
     class Meta:
         model=  Switch
         fields='__all__'
+
+        widgets = {
+            'purchase_date':forms.DateInput(attrs={'type': 'date'}),
+        }
 
 class DataOutletForm(forms.ModelForm):
     class Meta:

@@ -3,13 +3,19 @@
 {% block content %}
 
 <div class="container">
-    <h1>Building</h1>
+    <h1 class="location-titles">Building</h1>
     <a href="{%url 'device:buildinginp' %}"><button type="button" class="btn btn-primary mt-3"> Add Building</button></a>
     {% for building in dic.building %}
 
         <div class="grid">
             <div class="flex">
-                <p>{{building.building_desc}}</p>
+                
+
+                <div class="margin-right">
+                    <h4 class="list-title">Building Description</h4>
+                    <p>{{building.building_desc}}</p>
+                </div>
+                
             </div>
             
             <div class="delupd">
@@ -21,31 +27,46 @@
     {% endfor %}
 
 
-    <h1>Office</h1>
+    <h1 class="location-titles">Office</h1>
     <a href="{%url 'device:officeinp' %}"><button type="button" class="btn btn-primary mt-3"> Add Office</button></a>
     {% for office in dic.office %}
 
     <div class="grid">
         <div class="flex">
-            <p>{{office.room}}</p>
-            <p>{{office.buiding_code}}</p>
+            <div class="margin-right">
+                <h4 class="list-title">Office Name</h4>
+                <p>{{office.room}}</p>
+            </div>
+            <div class="margin-right">
+                <h4 class="list-title">Building Code</h4>
+                <p>{{office.building_code}}</p>
+            </div>
+            
+            
         </div>
         
         <div class="delupd">
-            <a class="upd"href="{%url 'device:officedel' office.id%}"><span class="material-icons md-36">update</span></a>
-            <a class="del" href="{%url 'device:officeupd' office.id%}"><span class="material-icons md-36">delete</span></a>
+            <a class="upd" href="{%url 'device:officeupd' office.id%}"><span class="material-icons md-36">update</span></a>
+            <a class="del"href="{%url 'device:officedel' office.id%}"><span class="material-icons md-36">delete</span></a>
+            
         </div>
     </div>
     {% endfor %}
 
 
-    <h1>Communication room</h1>
+    <h1 class="location-titles">Communication room</h1>
     <a href="{%url 'device:comsinp' %}"><button type="button" class="btn btn-primary mt-3"> Add Communication Room </button></a>
     {% for comms in dic.comms%}
         <div class="grid">
             <div class="flex">
-                <p>{{comms.building_code}}</p>
-                <p>{{comms.commroomname}}</p>
+                <div class="margin-right">
+                    <h4 class="list-title">Building Code</h4>
+                    <p>{{comms.building_code}}</p>
+                </div>
+                <div class="margin-right">
+                    <h4 class="list-title">Communication Room Name</h4>
+                    <p>{{comms.commroomname}}</p>
+                </div>
             </div>
             
             <div class="delupd">
