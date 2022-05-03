@@ -71,24 +71,20 @@ class CustomerVlan(models.Model):
     submitted_date_time = models.DateTimeField(default=timezone.now)
 
 
-
-
-
-
 class Connections(models.Model):
     company = models.ForeignKey(Customer, on_delete=models.CASCADE)
     customerVlan = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
     switch_port_number = models.IntegerField(default=0)
-    duplex = models.CharField(choices=duplex, max_length=200,default="none")
+    duplex = models.CharField(choices=duplex, max_length=200)
     voice_vlan_number = models.IntegerField(default=0)
-    phone_mac_address = models.CharField(max_length=200,default="none")
-    phone_extension = models.CharField(max_length=200,default="none")
-    purpose = models.TextField(default="none")
-    sticky_port = models.CharField(choices=yesno, max_length=200,default="none")
-    additional_configuration = models.TextField(default="none")
-    remark = models.TextField(default="none")
-    actual_user = models.CharField(max_length=200,default="none")
-    status = models.CharField(choices= status, max_length=200,default="none")
+    phone_mac_address = models.CharField(max_length=200)
+    phone_extension = models.CharField(max_length=200)
+    purpose = models.TextField()
+    sticky_port = models.CharField(choices=yesno, max_length=200)
+    additional_configuration = models.TextField()
+    remark = models.TextField()
+    actual_user = models.CharField(max_length=200)
+    status = models.CharField(choices= status, max_length=200)
     connection_date = models.DateField(default=timezone.now)
     disconnection_date = models.DateField(default=timezone.now)
 
@@ -96,12 +92,12 @@ class WorkOrder(models.Model):
     work_order_date = models.DateTimeField(default=timezone.now)
     request_date = models.DateField(default=timezone.now)
     connections= models.ForeignKey(Connections, on_delete=models.CASCADE, blank=True, null=True)
-    service_desk_ticket_number = models.CharField(max_length=200,default="none")
-    request_type = models.CharField(choices=requestType, max_length=200,default="none")
-    request_description = models.TextField(default="none")
-    configuration_remark = models.TextField(default="none")
-    comment = models.TextField(default="none")
-    engineer_assigned = models.CharField(max_length=200,default="none")
+    service_desk_ticket_number = models.CharField(max_length=200)
+    request_type = models.CharField(choices=requestType, max_length=200)
+    request_description = models.TextField()
+    configuration_remark = models.TextField()
+    comment = models.TextField()
+    engineer_assigned = models.CharField(max_length=200)
     company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
     submitted_date_time = models.DateTimeField(default=timezone.now)
@@ -120,16 +116,16 @@ class CommmunicationRoom(models.Model):
 
 class Switch(models.Model):
     communication_room = models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
-    switch_name = models.CharField(max_length=200,default="none")
-    model = models.CharField(max_length=200,default="none")
-    brand = models.CharField(max_length=200,default="none")
-    port_capacity = models.CharField(max_length=200,default="none")
-    owner = models.CharField(max_length=200,default="none")
-    supplier = models.CharField(max_length=200,default="none") 
-    poe_enabled = models.CharField(choices=yesno, max_length=200,default="none")
-    rack_number = models.CharField(max_length=200,default="none")
+    switch_name = models.CharField(max_length=200)
+    model = models.CharField(max_length=200)
+    brand = models.CharField(max_length=200)
+    port_capacity = models.CharField(max_length=200)
+    owner = models.CharField(max_length=200)
+    supplier = models.CharField(max_length=200) 
+    poe_enabled = models.CharField(choices=yesno, max_length=200)
+    rack_number = models.CharField(max_length=200)
     purchase_date = models.DateField(default=timezone.now)
-    status = models.CharField(choices=status, max_length=200,default="none")
+    status = models.CharField(choices=status, max_length=200)
 
 class DataOutlet(models.Model):
     connection = models.ForeignKey(Connections, on_delete=models.CASCADE)

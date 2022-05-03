@@ -9,16 +9,17 @@
     <div class="container">
         <a href="{%url 'device:workorderlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
         {{dic.form|crispy}}
-        <select  name="option" class="form-select" aria-label="Default select example">
+        <label for="exampleInputPassword1">Customer Vlan Number</label>
+        <select name="option" class="form-select" aria-label="Default select example">
             {% for f in dic.filter %}
-                <option value="{{f.id}}">{{f.commroomname}}</option>
+                <option value="{{f.id}}">{{f.vlan_number}}</option>
             {% endfor %}
-        </select>
+        </select> 
         {% comment %} <select name="option">
             {% for f in dic.filter %}
                 <option value="{{f.id}}">hellp</option>
             {% endfor %}
-        </select> {% endcomment %}
+        </select>  {% endcomment %}
         
         
         <button type="submit" class="btn btn-primary submit" value="submit">submit</button>

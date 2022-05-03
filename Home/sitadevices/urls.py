@@ -5,7 +5,7 @@ from . views import *
 app_name = 'device'
 
 urlpatterns =[
-    path('',DeviceHome, name="deviceHome"),
+    # path('',DeviceHome, name="deviceHome"),
     path('customers', CustomerViews, name='customerlist'),
     path('customerinp', CustomerInput, name='customerinp'),
     path('<int:customer_id>', CustomerInd, name='customerind'),
@@ -20,7 +20,7 @@ urlpatterns =[
     path('upd/vlan/<int:customerVlan_id>', CustomerVlanUpd, name='customerVlanupd'),
 
 
-    path('workorder', WorkOrders, name="workorderlist"),
+    path('', WorkOrders, name="workorderlist"),
     path('workorderinp', WorkOrderInput, name='workorderinp'),
     path('workorder/<int:workorder_id>', WorkOrderInd, name='workorderind'),
     path('del/workorder/<int:workorder_id>', WorkOrderDel, name='workorderdel'),
