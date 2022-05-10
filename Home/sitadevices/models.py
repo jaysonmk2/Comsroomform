@@ -51,6 +51,9 @@ class Customer(models.Model):
     active = models.CharField(choices=yesno, max_length=200)
     submitted_date_time = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.company_name
+
 
 class CustomerVlan(models.Model):
     customor = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -70,6 +73,9 @@ class CustomerVlan(models.Model):
     disconnection_date = models.DateField(null=True, blank=True)
     submitted_date_time = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return str(self.vlan_number)
+
 
 class Connections(models.Model):
     company = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -88,6 +94,11 @@ class Connections(models.Model):
     connection_date = models.DateField(default=timezone.now)
     disconnection_date = models.DateField(default=timezone.now)
 
+    def __str__(self):
+        return self.actual_user
+
+    
+
 class WorkOrder(models.Model):
     work_order_date = models.DateTimeField(default=timezone.now)
     request_date = models.DateField(default=timezone.now)
@@ -105,13 +116,22 @@ class WorkOrder(models.Model):
 class Building(models.Model):
     building_desc = models.TextField()
 
+    def __str__(self):
+        return self.building_desc
+
 class Room(models.Model):
     room = models.CharField(max_length=255)
     building_code = models.ForeignKey(Building, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.room
+
 class CommmunicationRoom(models.Model):
     building_code = models.ForeignKey(Building, on_delete=models.CASCADE)
     commroomname = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.commroomname
 
 
 class Switch(models.Model):
@@ -127,9 +147,14 @@ class Switch(models.Model):
     purchase_date = models.DateField(default=timezone.now)
     status = models.CharField(choices=status, max_length=200)
 
+    def __str__(self):
+        return self.switch_name
+
 class DataOutlet(models.Model):
     connection = models.ForeignKey(Connections, on_delete=models.CASCADE)
     comroom= models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
     patch_panel = models.IntegerField()
     port_status =models.CharField(choices=status, max_length=200)
     data_number = models.IntegerField(default=1)
+
+
