@@ -8,7 +8,7 @@
         <a href="{%url 'device:connectionlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
         
         {{dic.form|crispy}}
-        {% comment %} <br>
+        <br>
         <h1>Data Outlet</h1>
         <div class="form-group">
             <label for="exampleInputPassword1">Port Amount</label>
@@ -23,7 +23,7 @@
             {% for f in dic.filter %}
                 <option value="{{f.id}}">{{f.commroomname}}</option>
             {% endfor %}
-        </select> {% endcomment %}
+        </select>
         
         <button type="submit" class="btn btn-primary submit" value="submit">submit</button>
     </div>

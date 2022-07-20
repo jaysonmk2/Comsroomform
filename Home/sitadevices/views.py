@@ -381,14 +381,14 @@ def ConnectionInput(request):
             port_count = 1
             bigform = form.save() 
             
-            b = Connections.objects.get(id = bigform.id)
+            # b = Connections.objects.get(id = bigform.id)
             
-            for n in range(port_amount):
-                port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=patchpanel,comroom=filte,data_number=port_count)
-                port.save()
-                port_count = port_count + 1
+            # for n in range(port_amount):
+            #     port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=patchpanel,comroom=filte,data_number=port_count)
+            #     port.save()
+            #     port_count = port_count + 1
             
-            port_count = 1
+            # port_count = 1
 
             return redirect('device:connectionlist')
         else:
@@ -404,12 +404,12 @@ def ConnectionInput(request):
 
 def ConnectionInd(request, connection_id):
     connection = Connections.objects.filter(id = connection_id)
-    dataoutlets = DataOutlet.objects.filter(connection = connection_id)
+    # dataoutlets = DataOutlet.objects.filter(connection = connection_id)
     dic = {
         'connection': connection, 
-        'dataoutlets': dataoutlets
+        # 'dataoutlets': dataoutlets
     }
-    print(dataoutlets)
+    # print(dataoutlets)
 
     return render(request, 'admin/connection/indconnection.html', {'dic': dic})
 
@@ -421,33 +421,33 @@ def ConnectionDel(request,connection_id):
 def ConnectionUpd(request,connection_id):
     update = Connections.objects.get(pk=connection_id)
     form = ConnectionsForm(instance=update)
-    dataoutlet = DataOutlet.objects.filter(connection=connection_id)
-    length = len(dataoutlet) 
+    # dataoutlet = DataOutlet.objects.filter(connection=connection_id)
+    # length = len(dataoutlet) 
     filter = CommmunicationRoom.objects.all()
     
 
     if request.method =='POST':
-        com = request.POST['comoption']
-        filte = CommmunicationRoom.objects.get(id = com)
+        # com = request.POST['comoption']
+        # filte = CommmunicationRoom.objects.get(id = com)
         form = ConnectionsForm(request.POST, instance=update)
-        option = request.POST['option']
-        port_amount = int(request.POST.get('port-amount'))
+        # option = request.POST['option']
+        # port_amount = int(request.POST.get('port-amount'))
         # coms= data[1].comroom
         if form.is_valid():
             bigform = form.save() 
-            port_count = length + 1
-            b = Connections.objects.get(id = bigform.id)
-            if option == "add":
-                for n in range(port_amount):
-                    port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=0,comroom=filte, data_number=port_count)
-                    port.save()
-                    port_count = port_count + 1
+            # port_count = length + 1
+            # b = Connections.objects.get(id = bigform.id)
+            # if option == "add":
+            #     for n in range(port_amount):
+            #         port = DataOutlet(connection = b,port_status='ACTIVE',patch_panel=0,comroom=filte, data_number=port_count)
+            #         port.save()
+            #         port_count = port_count + 1
                 
-            else:
-                numb = length-port_amount
-                for n in range(length,numb,-1):
-                    c = dataoutlet.get(data_number = n)
-                    c.delete()
+            # else:
+            #     numb = length-port_amount
+            #     for n in range(length,numb,-1):
+            #         c = dataoutlet.get(data_number = n)
+            #         c.delete()
                 
             return redirect('device:connectionind', connection_id)
     
@@ -519,25 +519,25 @@ def SwitchUpd(request,switch_id):
     return render(request, 'admin/switch/updswitch.html',{'dic': dic})
 ######################################### SWITCH ######################################################
 
-def OutletUpd(request,data_id):
+# def OutletUpd(request,data_id):
     
     
-    update =DataOutlet.objects.get(pk=data_id)
-    con =update.connection.id
-    form = DataOutletForm(instance=update)
-    print(con)
-    if request.method =='POST':
-        form = DataOutletForm(request.POST, instance=update)
-        if form.is_valid():
-            form.save()
-            return redirect('device:connectionind',con)
+#     update =DataOutlet.objects.get(pk=data_id)
+#     con =update.connection.id
+#     form = DataOutletForm(instance=update)
+#     print(con)
+#     if request.method =='POST':
+#         form = DataOutletForm(request.POST, instance=update)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('device:connectionind',con)
     
-    dic = {
-        'id': update,
-        'form': form, 
-    }
+#     dic = {
+#         'id': update,
+#         'form': form, 
+#     }
 
-    return render(request, 'admin/connection/outletupd.html',{'dic': dic})
+#     return render(request, 'admin/connection/outletupd.html',{'dic': dic})
 
 #  def SwitchForm(request):
 #     if request.method == "POST":

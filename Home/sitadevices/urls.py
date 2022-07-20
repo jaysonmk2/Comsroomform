@@ -5,7 +5,9 @@ from . views import *
 app_name = 'device'
 
 urlpatterns =[
+    #bbbbbbbbbbbbbbbbbbbbb
     path('',DeviceHome, name="deviceHome"),
+    #cccccccccccccccccccccccddddd
     path('customers', CustomerViews, name='customerlist'),
     path('customerinp', CustomerInput, name='customerinp'),
     path('<int:customer_id>', CustomerInd, name='customerind'),
@@ -45,12 +47,18 @@ urlpatterns =[
     path('connection/<int:connection_id>', ConnectionInd, name='connectionind'),
     path('del/connection/<int:connection_id>', ConnectionDel, name='connectiondel'),
     path('upd/connection/<int:connection_id>', ConnectionUpd, name='connectionupd'),
-    path('upd/dataoutlet/<int:data_id>', OutletUpd, name='outletupd'),
+    # path('upd/dataoutlet/<int:data_id>', OutletUpd, name='outletupd'),
 
     path('switch', Switchs, name="switchlist"),
     path('switchinp', SwitchInput, name='switchinp'),
     path('switch/<int:switch_id>', SwitchInd, name='switchind'),
     path('del/switch/<int:switch_id>', SwitchDel, name='switchdel'),
     path('upd/switch/<int:switch_id>', SwitchUpd, name='switchupd'),
+
+    # path('switch', Switchs, name="switchlist"),
+    # path('switchinp', SwitchInput, name='switchinp'),
+    # path('switch/<int:switch_id>', SwitchInd, name='switchind'),
+    # path('del/switch/<int:switch_id>', SwitchDel, name='switchdel'),
+    # path('upd/switch/<int:switch_id>', SwitchUpd, name='switchupd'),
 
 ]
