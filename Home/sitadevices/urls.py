@@ -55,10 +55,10 @@ urlpatterns =[
     path('del/switch/<int:switch_id>', SwitchDel, name='switchdel'),
     path('upd/switch/<int:switch_id>', SwitchUpd, name='switchupd'),
 
-    # path('switch', Switchs, name="switchlist"),
-    # path('switchinp', SwitchInput, name='switchinp'),
+    path('dataoutlet', Data_outlet, name="dataoutletlist"),
+    path('dataoutletinp', Data_outletInput, name='dataoutletinp'),
     # path('switch/<int:switch_id>', SwitchInd, name='switchind'),
-    # path('del/switch/<int:switch_id>', SwitchDel, name='switchdel'),
-    # path('upd/switch/<int:switch_id>', SwitchUpd, name='switchupd'),
+    path('del/dataoutlet/<int:dataoutlet_id>', Data_outletDel, name='dataoutletdel'),
+    path('upd/dataoutlet/<int:dataoutlet_id>', Data_outletUpd, name='dataoutletupd'),
 
 ]

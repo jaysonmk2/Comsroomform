@@ -143,19 +143,23 @@ def WorkOrders(request):
 
 def WorkOrderInput(request):
     filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
+    connection = Connections.objects.filter(disconnection_date__isnull=True)
 
-    print(filter)
+    
     if request.method == "POST":
         form = WorkOrderInp(request.POST)
         email_extra_body = request.POST['option']
-        print(email_extra_body)
         filte = CustomerVlan.objects.get(id = email_extra_body)
-        print(filte)
+
+        con = request.POST['options']
+        filte2 = Connections.objects.get(id = con)
+        
         if form.is_valid():  
             # select = form.cleaned_data['hi']   
             # print(select)   
             form = form.save(commit=False) 
             form.vlan_number = filte
+            form.connections= filte2
 
             form.save()
 
@@ -167,7 +171,8 @@ def WorkOrderInput(request):
         
     dic = {
         'form': form, 
-        'filter':filter
+        'filter':filter,
+        'connection':connection
     }
     return render(request, 'admin/WorkOrder/addworkorder.html', {'dic': dic})
 
@@ -187,24 +192,29 @@ def WorkOrderDel(request,workorder_id):
 
 def WorkOrderUpd(request,workorder_id):
     filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
+    connection = Connections.objects.filter(disconnection_date__isnull=True)
+    
     update = WorkOrder.objects.get(pk=workorder_id)
     form = WorkOrderInp(instance=update)
     if request.method =='POST':
         form = WorkOrderInp(request.POST, instance=update)
         email_extra_body = request.POST['option']
-        print(email_extra_body)
         filte = CustomerVlan.objects.get(id = email_extra_body)
-        print(filte)
+
+        con = request.POST['options']
+        filte2 = Connections.objects.get(id = con)
         if form.is_valid():
             form.save(commit=False)
             form.save()
             WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
+            WorkOrder.objects.filter(pk=workorder_id).update(connections= filte2)
             return redirect('device:workorderind', workorder_id)
     
     dic = {
         'id': update,
         'form': form,
         'filter':filter,
+        'connection':connection
         
     }
 
@@ -365,21 +375,59 @@ def Connection(request):
     }
     return render(request, 'admin/connection/connection.html', {'dic': dic})
 
+
+# def WorkOrderUpd(request,workorder_id):
+#     filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
+#     update = WorkOrder.objects.get(pk=workorder_id)
+#     form = WorkOrderInp(instance=update)
+#     if request.method =='POST':
+#         form = WorkOrderInp(request.POST, instance=update)
+#         email_extra_body = request.POST['option']
+#         filte = CustomerVlan.objects.get(id = email_extra_body)
+#         if form.is_valid():
+#             form.save(commit=False)
+#             form.save()
+#             WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
+#             return redirect('device:workorderind', workorder_id)
+    
+#     dic = {
+#         'id': update,
+#         'form': form,
+#         'filter':filter,
+        
+#     }
+
+
+#  email_extra_body = request.POST['option']
+#         filte = CustomerVlan.objects.get(id = email_extra_body)
+        
+#         if form.is_valid():  
+#             # select = form.cleaned_data['hi']   
+#             # print(select)   
+#             form = form.save(commit=False) 
+#             form.vlan_number = filte
 def ConnectionInput(request):
     filter = CommmunicationRoom.objects.all()
+    dataoutlet = DataOutlet.objects.filter(port_status='DISABLED')
     if request.method == "POST":
         form = ConnectionsForm(request.POST)
-        com = request.POST['option']
+        datacon = request.POST['option']
+        filte = DataOutlet.objects.get(id = datacon)
         
-        port_amount = int(request.POST.get('port-amount'))
-        patchpanel= int(request.POST.get('patchpanel'))
+        # com = request.POST['option']
         
-        filte = CommmunicationRoom.objects.get(id = com)
+        # port_amount = int(request.POST.get('port-amount'))
+        # patchpanel= int(request.POST.get('patchpanel'))
         
+        # filte = CommmunicationRoom.objects.get(id = com)
         
         if form.is_valid():
-            port_count = 1
-            bigform = form.save() 
+            form = form.save(commit=False) 
+            form.data_outlet = filte
+
+            form.save()
+            # port_count = 1
+            # bigform = form.save() 
             
             # b = Connections.objects.get(id = bigform.id)
             
@@ -399,6 +447,7 @@ def ConnectionInput(request):
     dic = {
         'form': form,
         'filter': filter,
+        'dataoutlet':dataoutlet,
     }
     return render(request, 'admin/connection/addconnection.html', {'dic': dic})
 
@@ -421,20 +470,27 @@ def ConnectionDel(request,connection_id):
 def ConnectionUpd(request,connection_id):
     update = Connections.objects.get(pk=connection_id)
     form = ConnectionsForm(instance=update)
+    
     # dataoutlet = DataOutlet.objects.filter(connection=connection_id)
     # length = len(dataoutlet) 
     filter = CommmunicationRoom.objects.all()
+    dataoutlet = DataOutlet.objects.filter(port_status='DISABLED')
     
 
     if request.method =='POST':
         # com = request.POST['comoption']
         # filte = CommmunicationRoom.objects.get(id = com)
         form = ConnectionsForm(request.POST, instance=update)
+        datacon = request.POST['option']
+        filte = DataOutlet.objects.get(id = datacon)
         # option = request.POST['option']
         # port_amount = int(request.POST.get('port-amount'))
         # coms= data[1].comroom
         if form.is_valid():
-            bigform = form.save() 
+            form = form.save(commit=False) 
+            form.data_outlet = filte
+
+            form.save()
             # port_count = length + 1
             # b = Connections.objects.get(id = bigform.id)
             # if option == "add":
@@ -455,6 +511,7 @@ def ConnectionUpd(request,connection_id):
         'id': update,
         'form': form,
         'filter': filter,
+        'dataoutlet': dataoutlet,
     }
 
     return render(request, 'admin/connection/updconnection.html',{'dic': dic})
@@ -567,3 +624,61 @@ def SwitchUpd(request,switch_id):
 #         'form': form, 
 #     }
 #     return render(request, 'admin/addswitch.html', {'dic': dic})
+
+def Data_outlet(request):
+    dataoutlet = DataOutlet.objects.all()
+    dic = {
+        'dataoutlet': dataoutlet, 
+    }
+    return render(request, 'admin/dataoutlet/dataoutlet.html', {'dic': dic})
+
+def Data_outletInput(request):
+    if request.method == "POST":
+        form = DataOutletForm(request.POST)
+        if form.is_valid():  
+            form.save()
+
+            return redirect('device:dataoutletlist')
+        else:
+            pass
+    else:
+        form = DataOutletForm()
+        
+    dic = {
+        'form': form, 
+    }
+    return render(request, 'admin/dataoutlet/adddataoutlet.html', {'dic': dic})
+
+# def Data_outletInd(request, switch_id):
+#     switch = Switch.objects.filter(id =switch_id)
+
+#     dic = {
+#         'switch': switch, 
+#     }
+
+#     return render(request, 'admin/switch/indswitch.html', {'dic': dic})
+
+def Data_outletDel(request,dataoutlet_id):
+    print(dataoutlet_id)
+    c = DataOutlet.objects.get(pk=dataoutlet_id)
+    c.delete()
+    return redirect('device:dataoutletlist') 
+
+def Data_outletUpd(request,dataoutlet_id):
+    
+    update =DataOutlet.objects.get(pk=dataoutlet_id)
+    form = DataOutletForm(instance=update)
+    if request.method =='POST':
+        form = DataOutletForm(request.POST, instance=update)
+        if form.is_valid():
+            
+            form.save()
+          
+            return redirect('device:dataoutletlist')
+    
+    dic = {
+        'id': update,
+        'form': form, 
+    }
+
+    return render(request, 'admin/dataoutlet/upddataoutlet.html',{'dic': dic})

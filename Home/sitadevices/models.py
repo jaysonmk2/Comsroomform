@@ -76,6 +76,7 @@ class CustomerVlan(models.Model):
     def __str__(self):
         return str(self.vlan_number)
 
+
 class Building(models.Model):
     building_desc = models.TextField()
 
@@ -97,6 +98,7 @@ class CommmunicationRoom(models.Model):
         return self.commroomname
 
 
+
 class DataOutlet(models.Model):
     comroom= models.ForeignKey(CommmunicationRoom, on_delete=models.CASCADE)
     patch_panel = models.IntegerField()
@@ -107,6 +109,7 @@ class DataOutlet(models.Model):
 class Connections(models.Model):
     company = models.ForeignKey(Customer, on_delete=models.CASCADE)
     customerVlan = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
+    data_outlet = models.ForeignKey(DataOutlet, on_delete=models.CASCADE,null=True, blank=True)
     switch_port_number = models.IntegerField(default=0)
     duplex = models.CharField(choices=duplex, max_length=200)
     voice_vlan_number = models.IntegerField(default=0)
@@ -119,7 +122,7 @@ class Connections(models.Model):
     actual_user = models.CharField(max_length=200)
     status = models.CharField(choices= status, max_length=200)
     connection_date = models.DateField(default=timezone.now)
-    disconnection_date = models.DateField(default=timezone.now)
+    disconnection_date = models.DateField(default=timezone.now,null=True, blank=True)
 
     def __str__(self):
         return self.actual_user

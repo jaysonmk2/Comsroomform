@@ -7,6 +7,12 @@
     {%csrf_token%}
     
     <div class="container">
+        <label for="exampleInputPassword1">Data Outlet</label>
+        <select name="option" class="form-select" aria-label="Default select example">
+            {% for f in dic.dataoutlet %}
+                <option value="{{f.id}}">{{f.patch_panel}}</option>
+            {% endfor %}
+        </select> 
         {{dic.form|crispy}}
 
         {% comment %} <div class="form-group">
