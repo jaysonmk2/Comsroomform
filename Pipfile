@@ -11,6 +11,7 @@ django-storages = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-crispy-forms = "*"
+django-smart-selects = "*"
 
 [dev-packages]
 

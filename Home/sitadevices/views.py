@@ -143,7 +143,8 @@ def WorkOrders(request):
 
 def WorkOrderInput(request):
     filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
-    connection = Connections.objects.filter(disconnection_date__isnull=True)
+    connection = Connections.objects.all()
+    print(connection)
 
     
     if request.method == "POST":

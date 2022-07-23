@@ -28,6 +28,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout"),
     path('', include('FormPage.urls'), name='home'),
     path('devices/', include('sitadevices.urls')),
+    path('chaining/', include('smart_selects.urls')),
 ]
 
 if settings.DEBUG == True:

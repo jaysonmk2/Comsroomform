@@ -24,7 +24,7 @@ class WorkOrderInp(forms.ModelForm):
     class Meta:
         model=  WorkOrder
         fields='__all__'
-        exclude = ['submitted_date_time','vlan_number','connections']
+        exclude = ['submitted_date_time','vlan_number']
 
         widgets = {
             'work_order_date':forms.DateInput(attrs={'type': 'date'}),

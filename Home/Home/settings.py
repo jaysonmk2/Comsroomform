@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users',
     'sitadevices',
     'crispy_forms',
+    'smart_selects',
     
     # 'storages',
 ]
@@ -165,6 +166,9 @@ EMAIL_USE_TLS = True
 APPLICATION_EMAIL = 'Admin<nullwandere@gmail.com>'
 # server = smtplib.SMTP('smtp.office365.com', 587) 
 # server.starttls()
+
+USE_DJANGO_JQUERY = True
+
 
 
 # AWS_ACCESS_KEY_ID = 'AKIAUSKVGITX3IWEUBKJ'

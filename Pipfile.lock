@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "da20b2b8f93e1e183bf5da38860a2a81534cf19c6f25e4a3ce678642262bbfc2"
+            "sha256": "42193788f5a9c53dfe169686131becf68520c0cf28b2dcf432f8bc01f6f27657"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -26,19 +26,19 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:021f2a71cbcd75c87724b7dfbf28a691f07899345047f6bc999ef646d97461df",
-                "sha256:cb1f1d443672a65e23756cc712d060222e53e68d0700af60b4d904125d9186db"
+                "sha256:8844bbcb69ac0afc68225b58abe105852231cf1b562e6c8c9eb6b2b97fd4757a",
+                "sha256:b1855ede59e725b968d6336908ffc864b65985ca441d730625b09c43ccd6413b"
             ],
             "index": "pypi",
-            "version": "==1.24.32"
+            "version": "==1.24.36"
         },
         "botocore": {
             "hashes": [
-                "sha256:10eb15e178f9e1aef679fd1d7dbeba11c851859e09f6c1a2e334287bd8ed3a7e",
-                "sha256:d510a1d1956a18b6fa4b74b1b5dfbe8a7ca83f5ca4f59c43c368e143425f3725"
+                "sha256:3119ce186053b9bf6bd0bd0ad19a8cedeb626b205ce6ad26ea0894634f702cd5",
+                "sha256:8109526f55742539d2311d742b40c89e65781ad18966e577dda360cd55c9d047"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==1.27.32"
+            "version": "==1.27.36"
         },
         "dj-database-url": {
             "hashes": [
@@ -82,6 +82,14 @@
             "index": "pypi",
             "version": "==6.3.0"
         },
+        "django-smart-selects": {
+            "hashes": [
+                "sha256:67ce449bf456ddb6fc5434fa1a55f21194ef11a3b6871d7454f7f7c5a30bf493",
+                "sha256:bd8320a9d0f0a5e1d264f5563a3a068d4499e51481ee68a7712fe53272d572b0"
+            ],
+            "index": "pypi",
+            "version": "==1.6.0"
+        },
         "django-storages": {
             "hashes": [
                 "sha256:204a99f218b747c46edbfeeb1310d357f83f90fa6a6024d8d0a3f422570cee84",
@@ -108,10 +116,10 @@
         },
         "phonenumberslite": {
             "hashes": [
-                "sha256:3b54b7481047fdf223203a2822e7d781048723600880c11b93c17a2f69319555",
-                "sha256:6fca372f1742d4930de6954138aa535b448f36d08a39bc0e2b754b15e0364bd4"
+                "sha256:8cfee539ebcbe2874e8f0bdfe753e60265c198b33f8bfeb57f0fc59ba55c6d74",
+                "sha256:ade5346ac9f7ed0289d69ffc9e9f3f84b56b2b7010aa23fecf7bb22140b170d5"
             ],
-            "version": "==8.12.51"
+            "version": "==8.12.52"
         },
         "psycopg2": {
             "hashes": [

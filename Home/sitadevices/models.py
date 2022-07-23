@@ -1,6 +1,9 @@
+from sqlite3 import Connection
 from django.db import models
 from django.forms import DateField
 from django.utils import timezone
+from smart_selects.db_fields import ChainedForeignKey
+
 
 # Create your models here.
 
@@ -133,7 +136,13 @@ class WorkOrder(models.Model):
     work_order_date = models.DateTimeField(default=timezone.now)
     request_date = models.DateField(default=timezone.now)
     company_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    connections= models.ForeignKey(Connections, on_delete=models.CASCADE, blank=True, null=True)
+    connections= ChainedForeignKey(
+        Connections,
+        chained_field="company_id",
+        chained_model_field="company",
+        show_all=False,
+        auto_choose=True,
+        sort=True)
     service_desk_ticket_number = models.CharField(max_length=200)
     request_type = models.CharField(choices=requestType, max_length=200)
     request_description = models.TextField()
@@ -142,6 +151,9 @@ class WorkOrder(models.Model):
     engineer_assigned = models.CharField(max_length=200)
     vlan_number = models.ForeignKey(CustomerVlan, on_delete=models.CASCADE)
     submitted_date_time = models.DateTimeField(default=timezone.now)
+    
+    
+    
 
 
 

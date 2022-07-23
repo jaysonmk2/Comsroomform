@@ -5,15 +5,16 @@
 {% block content %}
 <form enctype="multipart/form-data" action="{%url 'device:workorderinp'%}"  class="" method="POST">
     {%csrf_token%}
+    {{ dic.form.media.js }}
     
     <div class="container">
         <a href="{%url 'device:workorderlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
-        <label for="exampleInputPassword1">Connection</label>
+        {% comment %} <label for="exampleInputPassword1">Connection</label>
         <select name="options" class="form-select" aria-label="Default select example">
             {% for f in dic.connection %}
                 <option value="{{f.id}}">{{f.company}}</option>
             {% endfor %}
-        </select> 
+        </select>  {% endcomment %}
         {{dic.form|crispy}}
         <label for="exampleInputPassword1">Customer Vlan Number</label>
         <select name="option" class="form-select" aria-label="Default select example">
