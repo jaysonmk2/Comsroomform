@@ -6,15 +6,16 @@
     {%csrf_token%}
     
     <div class="container">
-        <select name="options" class="form-select" aria-label="Default select example">
+        {% comment %} <select name="options" class="form-select" aria-label="Default select example">
             {% for f in dic.connection %}
                 <option value="{{f.id}}">{{f.company}}</option>
             {% endfor %}
-        </select>
+        </select> {% endcomment %}
         {{dic.form|crispy}}
-        <select name="option">
+        <label for="exampleInputPassword1">Customer Vlan Number</label>
+        <select name="option" class="form-select" aria-label="Default select example">
             {% for f in dic.filter %}
-                <option value="{{f.id}}">hellp</option>
+                <option value="{{f.id}}">{{f.vlan_number}}</option>
             {% endfor %}
         </select>
         <button type="submit" class="btn btn-primary submit" value="submit">submit</button>

@@ -6,7 +6,7 @@
     {%csrf_token%}
     <div class="container">
         <a href="{%url 'device:connectionlist' %}"><button type="button" class="btn btn-dark mt-3">Back</button></a>
-
+        <hr>
         <label for="exampleInputPassword1">Data Outlet</label>
         <select name="option" class="form-select" aria-label="Default select example">
             {% for f in dic.dataoutlet %}

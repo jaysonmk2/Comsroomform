@@ -187,7 +187,27 @@ def ViewUser(request, form_id):
     }
     return render(request, 'admin/admin-view-user-detail.html', {'dic': dic})
 
+
  
 @login_required
 def MasterAdmin(request):
     return render(request, 'admin/master-admin.html')
+
+@login_required
+def FormUpd(request,user_detail_id):
+    update = Forms.objects.get(pk=user_detail_id)
+    form = Form(instance=update)
+    if request.method =='POST':
+        form = Form(request.POST, instance=update)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('Form:adminpage')
+    
+    dic = {
+        'id': update,
+        'form': form,
+        
+    }
+
+    return render(request, 'admin/updform.html',{'dic': dic})

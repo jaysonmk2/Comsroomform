@@ -152,15 +152,15 @@ def WorkOrderInput(request):
         email_extra_body = request.POST['option']
         filte = CustomerVlan.objects.get(id = email_extra_body)
 
-        con = request.POST['options']
-        filte2 = Connections.objects.get(id = con)
+        # con = request.POST['options']
+        # filte2 = Connections.objects.get(id = con)
         
         if form.is_valid():  
             # select = form.cleaned_data['hi']   
             # print(select)   
             form = form.save(commit=False) 
             form.vlan_number = filte
-            form.connections= filte2
+            # form.connections= filte2
 
             form.save()
 
@@ -193,7 +193,7 @@ def WorkOrderDel(request,workorder_id):
 
 def WorkOrderUpd(request,workorder_id):
     filter = CustomerVlan.objects.filter(disconnection_date__isnull=True)
-    connection = Connections.objects.filter(disconnection_date__isnull=True)
+    # connection = Connections.objects.filter(disconnection_date__isnull=True)
     
     update = WorkOrder.objects.get(pk=workorder_id)
     form = WorkOrderInp(instance=update)
@@ -202,13 +202,13 @@ def WorkOrderUpd(request,workorder_id):
         email_extra_body = request.POST['option']
         filte = CustomerVlan.objects.get(id = email_extra_body)
 
-        con = request.POST['options']
-        filte2 = Connections.objects.get(id = con)
+        # con = request.POST['options']
+        # filte2 = Connections.objects.get(id = con)
         if form.is_valid():
             form.save(commit=False)
             form.save()
             WorkOrder.objects.filter(pk=workorder_id).update(vlan_number =filte)
-            WorkOrder.objects.filter(pk=workorder_id).update(connections= filte2)
+            # WorkOrder.objects.filter(pk=workorder_id).update(connections= filte2)
             return redirect('device:workorderind', workorder_id)
     
     dic = {

@@ -125,3 +125,11 @@ select{
     }
     
 }
+
+label{
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+#div_id_agreed_to_terms, #div_id_approved_or_not{
+    display:none;
+}
